@@ -1,0 +1,20 @@
+﻿<Application x:Class="Proyecto_TFG.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Proyecto_TFG"
+             xmlns:views="clr-namespace:Proyecto_TFG.Views"
+             xmlns:viewmodels="clr-namespace:Proyecto_TFG.ViewModels"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <views:HomeView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewmodels:ResumenViewModel}">
+                <views:ResumenView/>
+            </DataTemplate>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
