@@ -8,6 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
 
     </StackPanel>
  

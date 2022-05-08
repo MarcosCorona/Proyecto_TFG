@@ -31,7 +31,9 @@
             </TextBox.Background>
         </TextBox>
 
-        <PasswordBox x:Name="password" Grid.Column="1" Grid.Row="1" Width="130" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" Foreground="White" Cursor="Arrow" Margin="0,48,0,152">
+        <PasswordBox x:Name="password" Grid.Column="1" Grid.Row="1" Width="130" 
+                     Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+                     FontWeight="Bold" Foreground="White" Cursor="Arrow" Margin="0,48,0,152">
             <PasswordBox.Background>
                 <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
             </PasswordBox.Background>

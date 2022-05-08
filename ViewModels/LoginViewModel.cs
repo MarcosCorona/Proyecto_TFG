@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Proyecto_TFG.ViewModels
@@ -12,7 +14,7 @@ namespace Proyecto_TFG.ViewModels
     {
 
         public string username { get; set; }
-        public string password { get; set; }
+        public PasswordBox password { get; set; }
 
         public UpdateViewCommand UpdateViewCommand { set; get; }
 

@@ -27,7 +27,7 @@ namespace Proyecto_TFG.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=\"infsalinas.sytes.net, 10401\";Initial Catalog=2dam06;Persist Security" +
-            " Info=True;User ID=2dam06;Password=50561829D_S22")]
+            " Info=True;User ID=2dam06;Password=Marcos_1234")]
         public string _2dam06ConnectionString {
             get {
                 return ((string)(this["_2dam06ConnectionString"]));

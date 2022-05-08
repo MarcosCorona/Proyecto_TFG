@@ -29,7 +29,7 @@ namespace Proyecto_TFG.Commands
 
                 if (viewName.Equals("home"))
                 {
-                    mainViewModel.SelectedViewModel = homeViewModel;
+                    mainViewModel.SelectedViewModel = new HomeViewModel();
                 }
                 else if (viewName.Equals("resumen"))
                 {
