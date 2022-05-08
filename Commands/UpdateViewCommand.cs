@@ -1,9 +1,13 @@
-﻿using Proyecto_TFG.ViewModels;
+﻿using Proyecto_TFG.Handlers;
+using Proyecto_TFG.Models;
+using Proyecto_TFG.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Proyecto_TFG.Commands
@@ -25,8 +29,9 @@ namespace Proyecto_TFG.Commands
 
                 if (viewName.Equals("home"))
                 {
-                    mainViewModel.SelectedViewModel = new HomeViewModel();
-                }else if (viewName.Equals("resumen"))
+                    mainViewModel.SelectedViewModel = homeViewModel;
+                }
+                else if (viewName.Equals("resumen"))
                 {
                     mainViewModel.SelectedViewModel = new ResumenViewModel();
                 }
@@ -34,10 +39,16 @@ namespace Proyecto_TFG.Commands
         }
 
         public MainViewModel mainViewModel { get; set; }
+        public HomeViewModel homeViewModel { get; set; }
+
+
+
         public UpdateViewCommand(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
-            this.mainViewModel.SelectedViewModel = new HomeViewModel();
+            mainViewModel.SelectedViewModel = new LoginViewModel(this);
         }
+
+
     }
 }

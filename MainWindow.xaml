@@ -5,37 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_TFG"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="400">
-    <StackPanel>
+        Background="{StaticResource fondo}"  Width="auto" Height="auto">
+
+
+<StackPanel Visibility="Visible">
         <StackPanel.Background>
-            <SolidColorBrush Color="Black" Opacity="0.75"/>
+            <SolidColorBrush Color="Black" Opacity="0.2"/>
         </StackPanel.Background>
-
-        <StackPanel Orientation="Horizontal">
-            <Button Content="HOME" Command="{Binding UpdateViewCommand}" CommandParameter="home"/>
-            <Button Content="RESUMEN" Command="{Binding UpdateViewCommand}" CommandParameter="resumen"/>
+        <StackPanel Width="750" Height="400">
+            <ContentControl Content="{Binding SelectedViewModel}" Margin="30" />
         </StackPanel>
-
-        <Image Height="100" Width="100" Source="/Images/usuario.png"/>
-        
-        <TextBox Height="36" TextWrapping="Wrap" Text="{Binding username}" Width="253" VerticalContentAlignment="Center" Margin="10" FontWeight="Bold" Foreground="White">
-            <TextBox.Background>
-                <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
-            </TextBox.Background>
-        </TextBox>
-
-        <TextBox  Height="36" TextWrapping="Wrap" Text="{Binding password}" Width="253"  VerticalContentAlignment="Center" FontWeight="Bold" Foreground="White">
-            <TextBox.Background>
-                <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
-            </TextBox.Background>
-        </TextBox>
-        
-        <Button Content="LOGIN" Margin="10" Width="100" FontSize="15" FontWeight="Bold" Foreground="White" Command="{Binding LoginCommand}" CommandParameter="Username,Password" >
-            <Button.Background>
-                <SolidColorBrush  Color="#FFBF0549" Opacity="0.5"/>
-            </Button.Background>
-        </Button>
-        
-
     </StackPanel>
+
 </Window>

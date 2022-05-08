@@ -1,9 +1,14 @@
-﻿using Proyecto_TFG.ViewModels;
+﻿using Proyecto_TFG.Handlers;
+using Proyecto_TFG.Models;
+using Proyecto_TFG.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Proyecto_TFG.Commands
@@ -16,19 +21,34 @@ namespace Proyecto_TFG.Commands
         {
             return true;
         }
-
+        
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+        
+            ObservableCollection<PersonModel> personsList = DataSetHandler.GetPerson();
+
+             foreach (PersonModel p in personsList)
+             {
+               if (p.name == loginViewModel.username && p.password == parameter.ToString())
+               {
+                    loginViewModel.UpdateViewCommand.Execute("home");
+                }
+                else
+                {
+                    loginViewModel.UpdateViewCommand.Execute("home");
+                    MessageBox.Show("Login incorrecto, por favor vuelva a intentarlo.");
+                }
+  
+            }
+
         }
-
-        public MainViewModel mainViewModel { get; set; }
-
-        public LoginCommand(MainViewModel mainViewModel)
+        public LoginViewModel loginViewModel { get; set; }
+        public LoginCommand(LoginViewModel loginViewModel)
         {
-            this.mainViewModel = mainViewModel;
-            
+            this.loginViewModel = loginViewModel;
         }
+
+
 
 
     }

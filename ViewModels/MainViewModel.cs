@@ -1,4 +1,5 @@
-﻿using Proyecto_TFG.Commands;
+﻿using Microsoft.Reporting.WinForms;
+using Proyecto_TFG.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +15,21 @@ namespace Proyecto_TFG.ViewModels
         public ViewModelBase SelectedViewModel
         {
             get { return selectedViewModel; }
-            set { selectedViewModel = value; OnPropertyChanged(nameof(SelectedViewModel)); }
+            set { selectedViewModel = value; OnPropertyChanged(nameof(SelectedViewModel));}
         }
 
         public ICommand UpdateViewCommand { get; set; }
 
-        public string username { get; set; }
-        public string password { get; set; }
+
 
         public MainViewModel()
         {
             UpdateViewCommand = new UpdateViewCommand(this);
-            username = "User: ";
-            password = "Password: ";
+         
         }
+
+ 
+
+
     }
 }
