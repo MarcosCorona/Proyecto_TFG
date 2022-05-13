@@ -38,7 +38,9 @@
                 <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
             </PasswordBox.Background>
         </PasswordBox>
-        <Button Grid.ColumnSpan="2" Grid.Row="1" x:Name="btlogin" VerticalAlignment="Center" Content="LOGIN" Margin="175,0,175,0" Width="100" FontSize="15" FontWeight="Bold" Foreground="White" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=password}" Cursor="Hand">
+        <Button Grid.ColumnSpan="2" Grid.Row="1" x:Name="btlogin" VerticalAlignment="Center" Content="LOGIN" 
+                Margin="175,0,175,0" Width="100" FontSize="15" FontWeight="Bold" Foreground="White" 
+                Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=password}" Cursor="Hand">
             <Button.Background>
                 <SolidColorBrush  Color="#FFBF0549" Opacity="0.5"/>
             </Button.Background>

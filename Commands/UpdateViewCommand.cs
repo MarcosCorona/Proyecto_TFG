@@ -39,8 +39,6 @@ namespace Proyecto_TFG.Commands
         }
 
         public MainViewModel mainViewModel { get; set; }
-        public HomeViewModel homeViewModel { get; set; }
-
 
 
         public UpdateViewCommand(MainViewModel mainViewModel)

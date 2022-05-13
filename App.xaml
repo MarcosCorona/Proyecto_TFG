@@ -10,13 +10,11 @@
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
                 <views:HomeView/>
             </DataTemplate>
-            
-            <DataTemplate DataType="{x:Type viewmodels:ResumenViewModel}">
-                <views:ResumenView/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
                 <views:LoginView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:InventoryViewModel}">
+                <views:InventoryView/>
             </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Images/Dictionaries/Images.xaml"/>

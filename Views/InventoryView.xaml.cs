@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Proyecto_TFG.Views
 {
     /// <summary>
-    /// Lógica de interacción para ResumenView.xaml
+    /// Lógica de interacción para InventoryView.xaml
     /// </summary>
-    public partial class ResumenView : UserControl
+    public partial class InventoryView : UserControl
     {
-        public ResumenView()
+        public InventoryView()
         {
             InitializeComponent();
         }
