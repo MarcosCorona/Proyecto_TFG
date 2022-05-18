@@ -19,7 +19,15 @@ namespace Proyecto_TFG.Commands
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            if (parameter is string)
+            {
+                string viewName = (string)parameter;
+
+                if (viewName.Equals("outbound"))
+                {
+                    homeViewModel.SelectedViewModel = new OutboundViewModel(this);
+                }
+            }
         }
 
         public HomeViewModel homeViewModel { get; set; }

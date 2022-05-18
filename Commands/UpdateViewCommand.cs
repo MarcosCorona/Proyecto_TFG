@@ -31,10 +31,6 @@ namespace Proyecto_TFG.Commands
                 {
                     mainViewModel.SelectedViewModel = new HomeViewModel();
                 }
-                else if (viewName.Equals("resumen"))
-                {
-                    mainViewModel.SelectedViewModel = new ResumenViewModel();
-                }
             }
         }
 

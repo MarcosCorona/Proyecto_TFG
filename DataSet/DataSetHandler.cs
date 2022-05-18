@@ -14,6 +14,8 @@ namespace Proyecto_TFG.Handlers
     class DataSetHandler
     {
         private static PersonTableAdapter personAdapter = new PersonTableAdapter();
+
+        private static ProductsTableAdapter productAdapter = new ProductsTableAdapter();
         
         public static ObservableCollection<PersonModel> GetPerson()
         {
@@ -37,5 +39,21 @@ namespace Proyecto_TFG.Handlers
             return personsList;
         }
 
+        internal static ObservableCollection<ProductModel> GetProducts()
+        {
+            ObservableCollection<ProductModel> productsList = new ObservableCollection<ProductModel>();
+            DataTable productListDT = productAdapter.GetData();
+            foreach (DataRow productRow in productListDT.Rows)
+            {
+                ProductModel product = new ProductModel();
+                product.ItemId = (int)productRow["ItemId"];
+                product.Name = (string)productRow["Name"];
+                product.Quantity = (int)productRow["Quantity"];
+                product.Price = (double)productRow["Price"];
+                product.Description = (string)productRow["Description"];
+                productsList.Add(product);
+            }
+            return productsList;
+        }
     }
 }

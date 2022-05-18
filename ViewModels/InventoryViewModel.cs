@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_TFG.ViewModels
 {
-    class InventoryViewModel
+    class InventoryViewModel: ViewModelBase
     {
         public UpdateViewCommandV2 updateViewCommandv2 { set; get; }
 

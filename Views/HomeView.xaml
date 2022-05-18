@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Proyecto_TFG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="950">
     <UserControl.Background>
-        <SolidColorBrush Color="CornflowerBlue" Opacity="0.5"/>
+        <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
     </UserControl.Background>
     <StackPanel>
         <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
@@ -16,16 +16,28 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" Width="200" Height="380">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="#FF221D3A" Opacity="0.5"/>
+                </StackPanel.Background>
+
                 <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Outbounds" 
-                 Width="180" FontSize="15" FontWeight="Bold" Foreground="White" 
-                Command="{Binding UpdateViewCommandV2}" CommandParameter="outbound" Cursor="Hand">
+                 Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
+                Command="{Binding UpdateViewCommandV2}" CommandParameter="outbound" Cursor="Hand" BorderBrush="#FF3A8CB7"
+                        >
                     <Button.Background>
-                        <SolidColorBrush  Color="#FFBF0549" Opacity="0.5"/>
+                        <SolidColorBrush  Color="#FF05B2BF" Opacity="0.5"/>
                     </Button.Background>
                 </Button>
+
+
+
+
             </StackPanel>
-            <StackPanel Grid.Column="1">
+
+
+
+            <StackPanel Grid.Column="1" Width="750">
                 <ContentControl Content="{Binding SelectedViewModel}" Margin="30" />
             </StackPanel>
         </Grid>

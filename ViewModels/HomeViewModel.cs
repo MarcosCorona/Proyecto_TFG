@@ -17,13 +17,13 @@ namespace Proyecto_TFG.ViewModels
             set { selectedViewModel = value; OnPropertyChanged(nameof(SelectedViewModel)); }
         }
 
-        public ICommand UpdateViewCommandv2 { get; set; }
+        public ICommand UpdateViewCommandV2 { get; set; }
 
 
 
         public HomeViewModel()
         {
-            UpdateViewCommandv2 = new UpdateViewCommandV2(this);
+            UpdateViewCommandV2 = new UpdateViewCommandV2(this);
 
         }
     }
