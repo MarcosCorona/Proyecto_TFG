@@ -1,4 +1,5 @@
 ﻿using Proyecto_TFG.Commands;
+using Proyecto_TFG.Commands.Clients;
 using Proyecto_TFG.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace Proyecto_TFG.ViewModels
         public UpdateViewCommandV2 updateViewCommandv2 { set; get; }
 
         public LoadProductsCommand loadProductsCommand { get; set; }
+        public LoadClientsListCommand loadClientsListCommand { get; set; }
+
+        public CreateOutboundOrderCommand createOutboundOrderCommand { get; set; }
 
         public AddtochartCommand addtochartCommand { set; get; }
 
@@ -88,11 +92,69 @@ namespace Proyecto_TFG.ViewModels
                 return charList;
             }
         }
+        private ObservableCollection<ClientModel> clientsList;
+        public ObservableCollection<ClientModel> ClientsList
+        {
+            set
+            {
+                clientsList = value;
+                OnPropertyChanged(nameof(ClientsList));
+            }
+            get
+            {
+                return clientsList;
+            }
+        }
+
+        private ObservableCollection<OutboundModel> outboundList;
+        public ObservableCollection<OutboundModel> OutboundList
+        {
+            set
+            {
+                outboundList = value;
+                OnPropertyChanged(nameof(OutboundList));
+            }
+            get
+            {
+                return outboundList;
+            }
+        }
+        private OutboundModel outbound;
+        public OutboundModel Outbound
+        {
+            set
+            {
+                outbound = value;
+                OnPropertyChanged(nameof(Outbound));
+            }
+            get
+            {
+                return outbound;
+            }
+        }
+        private ClientModel client;
+        public ClientModel Client
+        {
+            set
+            {
+                client = value;
+                OnPropertyChanged(nameof(Client));
+            }
+            get
+            {
+                return client;
+            }
+        }
+
+
         public OutboundViewModel(UpdateViewCommandV2 updateViewCommand)
         {
             loadProductsCommand = new LoadProductsCommand(this);
             addtochartCommand = new AddtochartCommand(this);
+            createOutboundOrderCommand = new CreateOutboundOrderCommand(this);
+            loadClientsListCommand = new LoadClientsListCommand(this);
             updateViewCommandv2 = updateViewCommand;
+            CharList = new ObservableCollection<ProductModel>();
         }
     }
 }

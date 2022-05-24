@@ -16,7 +16,13 @@ namespace Proyecto_TFG.Handlers
         private static PersonTableAdapter personAdapter = new PersonTableAdapter();
 
         private static ProductsTableAdapter productAdapter = new ProductsTableAdapter();
-        
+
+        private static ClientsTableAdapter clientAdapter = new ClientsTableAdapter();
+
+        private static OutboundOrdersTableAdapter outboundAdapter = new OutboundOrdersTableAdapter();
+
+        private static OutboundDetailTableAdapter detailAdapter = new OutboundDetailTableAdapter();
+
         public static ObservableCollection<PersonModel> GetPerson()
         {
             ObservableCollection<PersonModel> personsList = new ObservableCollection<PersonModel>();
@@ -39,6 +45,72 @@ namespace Proyecto_TFG.Handlers
             return personsList;
         }
 
+        internal static bool insertDetail(int orderId,int itemId, string description, int quantity, double price)
+        {
+            try
+            {
+                DataTable detailTableAdapter = detailAdapter.GetData();
+                if (detailTableAdapter.Rows.Count < 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    int idDetalle = detailTableAdapter.Rows.Count + 1;
+                    detailAdapter.Insert(idDetalle, itemId, description, (Decimal)price, quantity);
+                    return true;
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static int i = 1;
+        internal static bool insertOutbound(int clientId, DateTime date, double total)
+        {
+            try
+            {
+                DataTable outboundDataTale = outboundAdapter.GetData();
+                if (outboundDataTale.Rows.Count < 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    i = outboundDataTale.Rows.Count + 1;
+                    outboundAdapter.Insert(clientId, date, (Decimal)total);
+                    return true;
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        internal static ObservableCollection<ClientModel> GetClients()
+        {
+            ObservableCollection<ClientModel> clientsList = new ObservableCollection<ClientModel>();
+            DataTable clientListDT = clientAdapter.GetData();
+            foreach (DataRow clientRow in clientListDT.Rows)
+            {
+                ClientModel client = new ClientModel();
+                client.ClientId = (int)clientRow["ClientId"];
+                client.Name = (string)clientRow["Name"];
+                client.Telephone = (string)clientRow["Telephone"];
+                client.Email = (string)clientRow["Email"];
+                client.NIF = (string)clientRow["NIF"];
+
+
+                clientsList.Add(client);
+            }
+            return clientsList;
+        }
+
         internal static ObservableCollection<ProductModel> GetProducts()
         {
             ObservableCollection<ProductModel> productsList = new ObservableCollection<ProductModel>();
@@ -54,6 +126,27 @@ namespace Proyecto_TFG.Handlers
                 productsList.Add(product);
             }
             return productsList;
+        }
+        internal static ObservableCollection<OutboundModel> GetOutbounds()
+        {
+            ObservableCollection<OutboundModel> outboundsList = new ObservableCollection<OutboundModel>();
+            DataTable outboundListDT = outboundAdapter.GetData();
+            foreach (DataRow outboundRow in outboundListDT.Rows)
+            {
+                OutboundModel outbound = new OutboundModel();
+                outbound.OrderId = (int)outboundRow["OrderId"];
+                outbound.ClientId = (int)outboundRow["ClientId"];
+                outbound.OrderDate = (DateTime)outboundRow["OrderDate"];
+                outbound.Total = (double)outboundRow["Total"];
+                outboundsList.Add(outbound);
+            }
+            return outboundsList;
+        }
+        internal static void updateqty(int resultQty, int itemId)
+        {
+            ObservableCollection<ProductModel> productsList = new ObservableCollection<ProductModel>();
+            productAdapter.UpdateQuantity(resultQty,itemId);
+            GetProducts();
         }
     }
 }

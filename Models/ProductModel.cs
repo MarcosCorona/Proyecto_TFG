@@ -74,5 +74,18 @@ namespace Proyecto_TFG.Models
             }
         }
 
+        private double total { get; set; }
+        public double Total
+        {
+            get { return total; }
+            set
+            {
+                total = value;
+                OnPropertyChanged(nameof(Total));
+            }
+        }
+
+    
+
     }
 }

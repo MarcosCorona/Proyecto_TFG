@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Proyecto_TFG.Views"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="950">
+             mc:Ignorable="d" d:DesignWidth="950" Height="750">
     <i:Interaction.Triggers>
 
         <i:EventTrigger EventName="Loaded">
@@ -15,31 +14,17 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
-            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top">
-            <Button Content="Create Order" Width="150" Margin="20" Background="#FF3A8CB7" />
-            <Button Content="Manage Orders" Width="150" Margin="20" Background="#FF3A8CB7" Cursor="Hand"/>
+            <Button Content="Create Order" Width="150" Margin="20" Background="#FF3A8CB7" Click="createClick" />
+            <Button Content="Manage Orders" Width="150" Margin="20" Background="#FF3A8CB7" Cursor="Hand" Click="manageClick"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Visibility="Collapsed">
-            <ListView x:Name="listaProductosFactura"  MaxHeight="400"  MaxWidth="450" FontSize="10"   HorizontalAlignment="Left"  ItemsSource="{Binding ListaProductosAdd}" Foreground="#DDFFFFFF">
-                    <ListView.View>
-                        <GridView >
-                        <GridViewColumn Header="Order number" DisplayMemberBinding="{Binding Path=OrderId}"/>
-                        <GridViewColumn Header="Item identifier" DisplayMemberBinding="{Binding Path=ItemId}"/>
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=Description}"/>
-                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Path=Quantity}"/>
-                        <GridViewColumn Header="Price unit" DisplayMemberBinding="{Binding Path=Price}"/>
-                        <GridViewColumn Header="Total price" DisplayMemberBinding="{Binding Path=TotalPrice}"/>
-                    </GridView>
-                    </ListView.View>
-              </ListView>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Height="425" VerticalAlignment="Bottom">
-            
-            <ListView x:Name="ProductsList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedIndex="{Binding Product}" Foreground="#DDFFFFFF">
+
+        <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Collapsed" Grid.RowSpan="2" >
+            <ListView x:Name="ProductsList2"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" Foreground="#DDFFFFFF">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>
@@ -47,27 +32,60 @@
                         <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
                         <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
                         <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
-                        
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Top" Height="649" >
+            <ComboBox x:Name="cmbClient" Width="150" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                      ItemsSource="{Binding ClientsList}" SelectedItem="{Binding Client}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding loadClientsListCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </ComboBox>
+
+            <ListView x:Name="ProductsList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" Foreground="#DDFFFFFF">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+
                     </GridView>
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
-                <TextBox Text="{Binding Quantity}" Name="Quantity" Width="50" Foreground="White" Margin="20" Cursor="Arrow"/>
-                <Button Width="150" Content="Add to chart." Background="#FF3A8CB7" Command="{Binding addtochartCommand}" CommandParameter="{Binding ElementName=ProductsList, Path=SelectedIndex}" Cursor="Hand"/>
+                <TextBlock Text="Quantity: " FontWeight="Bold" Foreground="White" 
+                           FontSize="15" Padding="10" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding Quantity}" x:Name="Quantity" Width="50" Foreground="White" Margin="20" Cursor="Arrow"/>
+                <Button Width="150" Content="Add to chart" Background="#FF3A8CB7" Command="{Binding addtochartCommand}" CommandParameter="{Binding SelectedItem, ElementName=ProductsList}" Cursor="Hand"/>
             </StackPanel>
-            
-            <ListView x:Name="charList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding CharList}" Foreground="#DDFFFFFF">
-                <ListView.View>
-                    <GridView >
-                        <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
-                        <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <StackPanel>
+                <ListView x:Name="charList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding CharList}" Foreground="#DDFFFFFF">
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
+                            <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                            <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock  HorizontalAlignment="Center" FontSize="15" Width="auto" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" Text="Total: "/>
+                    <TextBlock HorizontalAlignment="Center" FontSize="15" Width="100" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" Text="{Binding Total}"/>
+                    <Button Width="150" Content="Create order" Background="#FF3A8CB7" Command="{Binding createOutboundOrderCommand}" Cursor="Hand"/>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

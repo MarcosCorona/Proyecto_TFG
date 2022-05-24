@@ -24,5 +24,17 @@ namespace Proyecto_TFG.Views
         {
             InitializeComponent();
         }
+
+        private void createClick(object sender, RoutedEventArgs e)
+        {
+            managePanel.Visibility = Visibility.Collapsed;
+            createPanel.Visibility = Visibility.Visible;    
+        }
+
+        private void manageClick(object sender, RoutedEventArgs e)
+        {
+            managePanel.Visibility = Visibility.Visible;
+            createPanel.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -120,17 +120,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\AddtochartCommand.cs" />
-    <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Commands\LoadProductsCommand.cs" />
-    <Compile Include="Commands\UpdateViewCommand.cs" />
-    <Compile Include="Commands\UpdateViewCommandV2.cs" />
+    <Compile Include="Commands\Clients\LoadClientsListCommand.cs" />
+    <Compile Include="Commands\outbounds\AddtochartCommand.cs" />
+    <Compile Include="Commands\outbounds\CreateOutboundOrderCommand.cs" />
+    <Compile Include="Commands\Login\LoginCommand.cs" />
+    <Compile Include="Commands\Products\LoadProductsCommand.cs" />
+    <Compile Include="Commands\viewNavegation\UpdateViewCommand.cs" />
+    <Compile Include="Commands\viewNavegation\UpdateViewCommandV2.cs" />
+    <Compile Include="DataSet\DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DataSetHandler.cs" />
+    <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\OutboundModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Services\DBHandler.cs" />
