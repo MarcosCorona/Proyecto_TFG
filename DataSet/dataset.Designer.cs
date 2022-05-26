@@ -3300,7 +3300,7 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OutboundOrdersRow AddOutboundOrdersRow(ClientsRow parentClientsRowByFK_OutboundOrders_Clients, System.DateTime OrderDate, decimal Total) {
+            public OutboundOrdersRow AddOutboundOrdersRow(ClientsRow parentClientsRowByFK_OutboundOrders_Clients, System.DateTime OrderDate, double Total) {
                 OutboundOrdersRow rowOutboundOrdersRow = ((OutboundOrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3354,7 +3354,7 @@ namespace Proyecto_TFG.DataSet {
                 base.Columns.Add(this.columnClientId);
                 this.columnOrderDate = new global::System.Data.DataColumn("OrderDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderDate);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnOrderId}, true));
@@ -4747,10 +4747,10 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Total {
+            public double Total {
                 get {
                     try {
-                        return ((decimal)(this[this.tableOutboundOrders.TotalColumn]));
+                        return ((double)(this[this.tableOutboundOrders.TotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Total\' de la tabla \'OutboundOrders\' es DBNull.", e);

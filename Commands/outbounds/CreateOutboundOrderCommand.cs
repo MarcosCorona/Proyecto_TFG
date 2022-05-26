@@ -24,7 +24,11 @@ namespace Proyecto_TFG.Commands
         {
             ClientModel c = outboundViewModel.Client;
 
-            double total = outboundViewModel.Total;
+            double total = 0;
+            foreach (ProductModel p in outboundViewModel.CharList)
+            {
+                total = p.Total + total;
+            }
 
             outboundViewModel.OutboundList = DataSetHandler.GetOutbounds();
 
@@ -43,19 +47,11 @@ namespace Proyecto_TFG.Commands
                 bool okInsertar = DataSetHandler.insertOutbound(c.ClientId, date, total);
                 if (okInsertar)
                 {
-                 
-                    foreach(OutboundModel o in outboundViewModel.OutboundList)
-                    {
-                        foreach (ProductModel p in outboundViewModel.CharList)
-                        {
-                            DataSetHandler.insertDetail(o.OrderId,p.ItemId, p.Description, p.Quantity, p.Price);
-                        }
-                    }
-                        
-                  
-
+                   foreach (ProductModel p in outboundViewModel.CharList)
+                   {
+                            DataSetHandler.insertDetail(p.ItemId, p.Description, p.Quantity, p.Price);
+                   }
                     MessageBox.Show("Outbound order has been created.");
-
                 }
                 else
                 {

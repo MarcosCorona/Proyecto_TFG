@@ -23,6 +23,10 @@ namespace Proyecto_TFG.Commands
             if (parameter.Equals("outbound"))
             {
                 outboundViewModel.ProductsList = DataSetHandler.GetProducts();
+
+            }else if (parameter.Equals("inventory"))
+            {
+                inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
             }
            
         }
@@ -31,5 +35,13 @@ namespace Proyecto_TFG.Commands
         {
             this.outboundViewModel = outboundViewModel;
         }
+
+        public InventoryViewModel inventoryViewModel { get; set; }
+        public LoadProductsCommand(InventoryViewModel inventoryViewModel)
+        {
+            this.inventoryViewModel = inventoryViewModel;
+        }
+
+
     }
 }

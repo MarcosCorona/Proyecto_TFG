@@ -65,6 +65,7 @@ namespace Proyecto_TFG.Commands
                                 outboundViewModel.CharList.Add(product2);
                             }
                         }
+
                         outboundViewModel.Total = 0;
                         foreach (ProductModel p in outboundViewModel.CharList)
                         {

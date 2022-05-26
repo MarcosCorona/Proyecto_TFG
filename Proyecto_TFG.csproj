@@ -124,6 +124,7 @@
     <Compile Include="Commands\outbounds\AddtochartCommand.cs" />
     <Compile Include="Commands\outbounds\CreateOutboundOrderCommand.cs" />
     <Compile Include="Commands\Login\LoginCommand.cs" />
+    <Compile Include="Commands\Products\LoadProductCommand.cs" />
     <Compile Include="Commands\Products\LoadProductsCommand.cs" />
     <Compile Include="Commands\viewNavegation\UpdateViewCommand.cs" />
     <Compile Include="Commands\viewNavegation\UpdateViewCommandV2.cs" />

@@ -45,30 +45,9 @@ namespace Proyecto_TFG.Handlers
             return personsList;
         }
 
-        internal static bool insertDetail(int orderId,int itemId, string description, int quantity, double price)
-        {
-            try
-            {
-                DataTable detailTableAdapter = detailAdapter.GetData();
-                if (detailTableAdapter.Rows.Count < 0)
-                {
-                    return false;
-                }
-                else
-                {
-                    int idDetalle = detailTableAdapter.Rows.Count + 1;
-                    detailAdapter.Insert(idDetalle, itemId, description, (Decimal)price, quantity);
-                    return true;
-                }
+        public static int i = 1;
 
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private static int i = 1;
+        
         internal static bool insertOutbound(int clientId, DateTime date, double total)
         {
             try
@@ -80,17 +59,37 @@ namespace Proyecto_TFG.Handlers
                 }
                 else
                 {
-                    i = outboundDataTale.Rows.Count + 1;
-                    outboundAdapter.Insert(clientId, date, (Decimal)total);
+                    i++;
+                    outboundAdapter.Insert(clientId, date, (Decimal)total); 
                     return true;
                 }
-
             }
             catch
             {
                 return false;
             }
         }
+        internal static bool insertDetail(int itemId, string description, int quantity, double price)
+        {
+            try
+            {
+                DataTable detailTableAdapter = detailAdapter.GetData();
+                if (detailTableAdapter.Rows.Count < 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    detailAdapter.Insert(i, itemId, description, (Decimal)price, quantity);
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         internal static ObservableCollection<ClientModel> GetClients()
         {
@@ -104,8 +103,6 @@ namespace Proyecto_TFG.Handlers
                 client.Telephone = (string)clientRow["Telephone"];
                 client.Email = (string)clientRow["Email"];
                 client.NIF = (string)clientRow["NIF"];
-
-
                 clientsList.Add(client);
             }
             return clientsList;

@@ -27,6 +27,10 @@ namespace Proyecto_TFG.Commands
                 {
                     homeViewModel.SelectedViewModel = new OutboundViewModel(this);
                 }
+                else if (viewName.Equals("inventory"))
+                {
+                    homeViewModel.SelectedViewModel = new InventoryViewModel(this);
+                }
             }
         }
 
