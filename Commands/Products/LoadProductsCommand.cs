@@ -24,11 +24,19 @@ namespace Proyecto_TFG.Commands
             {
                 outboundViewModel.ProductsList = DataSetHandler.GetProducts();
 
-            }else if (parameter.Equals("inventory"))
+            }
+            else if (parameter.Equals("inventory"))
             {
                 inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
             }
-           
+            else if (parameter.Equals("inbound"))
+            {
+               
+                inboundViewModel.ProductsList = DataSetHandler.GetProducts();
+                
+                    
+            }
+
         }
         public OutboundViewModel outboundViewModel { get; set; }
         public LoadProductsCommand(OutboundViewModel outboundViewModel)
@@ -40,6 +48,12 @@ namespace Proyecto_TFG.Commands
         public LoadProductsCommand(InventoryViewModel inventoryViewModel)
         {
             this.inventoryViewModel = inventoryViewModel;
+        }
+
+        public InboundViewModel inboundViewModel { get; set; }
+        public LoadProductsCommand(InboundViewModel inboundViewModel)
+        {
+            this.inboundViewModel = inboundViewModel;
         }
 
 

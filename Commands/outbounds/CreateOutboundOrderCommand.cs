@@ -30,7 +30,7 @@ namespace Proyecto_TFG.Commands
                 total = p.Total + total;
             }
 
-            outboundViewModel.OutboundList = DataSetHandler.GetOutbounds();
+            
 
             DateTime date = DateTime.Today;
 
@@ -52,6 +52,7 @@ namespace Proyecto_TFG.Commands
                             DataSetHandler.insertDetail(p.ItemId, p.Description, p.Quantity, p.Price);
                    }
                     MessageBox.Show("Outbound order has been created.");
+                    outboundViewModel.OutboundList = DataSetHandler.GetOutbounds();
                 }
                 else
                 {

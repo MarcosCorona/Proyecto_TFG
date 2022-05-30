@@ -23,31 +23,53 @@
 
 
         <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Collapsed" Grid.RowSpan="2" >
-            <ListView x:Name="ProductsList2"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" Foreground="#DDFFFFFF">
+
+            <ListView x:Name="outboundList"  MaxHeight="150"  MaxWidth="750" FontSize="12" 
+                      ItemsSource="{Binding OutboundList}" SelectedItem="{Binding Outbound}" Foreground="#DDFFFFFF">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding loadOutboundsCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <ListView.View>
                     <GridView >
-                        <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
-
+                        <GridViewColumn Width="150" Header="Order Number" DisplayMemberBinding="{Binding OrderId}"/>
+                        <GridViewColumn Header="Client Id" DisplayMemberBinding="{Binding ClientId}"/>
+                        <GridViewColumn Header="OrderDate" DisplayMemberBinding="{Binding OrderDate}"/>
+                        <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="150" Content="Delete" HorizontalAlignment="Right" Background="#FF3A8CB7" Margin="10" 
+                        Command="{Binding deleteOutboundCommand}"
+                        CommandParameter="{Binding ElementName=outboundList, Path=SelectedItem}" Cursor="Hand">
+                </Button>
+                <Button Width="150" Content="Load outbounds" HorizontalAlignment="Right" Background="#FF3A8CB7">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="GotFocus">
+                            <i:InvokeCommandAction Command="{Binding loadOutboundsCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
         </StackPanel>
-        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Top" Height="649" >
-            <ComboBox x:Name="cmbClient" Width="150" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" 
-                      ItemsSource="{Binding ClientsList}" SelectedItem="{Binding Client}">
-
-                <i:Interaction.Triggers>
+        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Top" Height="649" Visibility="Visible" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Select a client:" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="15"
+                           Foreground="White" FontWeight="Bold" FontFamily="Segoe Print" Margin="2"
+                           VerticalAlignment="Center"/>
+                <ComboBox x:Name="cmbClient" Width="150" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                          ItemsSource="{Binding ClientsList}" SelectedItem="{Binding Client}" Background="#FF3A8CB7" 
+                          VerticalContentAlignment="Center" SelectedIndex="1" Margin="2"  Foreground="Black" HorizontalContentAlignment="Center" Cursor="AppStarting">
+                    <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding loadClientsListCommand}"/>
+                        <i:InvokeCommandAction Command="{Binding loadClientsListCommand}" CommandParameter="outbound"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
 
             </ComboBox>
-
+            </StackPanel>
             <ListView x:Name="ProductsList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" Foreground="#DDFFFFFF">
                 <ListView.View>
                     <GridView >

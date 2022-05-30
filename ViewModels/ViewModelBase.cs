@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_TFG.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace Proyecto_TFG.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+    
     }
 }

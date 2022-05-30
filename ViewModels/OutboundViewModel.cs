@@ -1,5 +1,6 @@
 ﻿using Proyecto_TFG.Commands;
 using Proyecto_TFG.Commands.Clients;
+using Proyecto_TFG.Commands.outbounds;
 using Proyecto_TFG.Models;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,12 @@ namespace Proyecto_TFG.ViewModels
     class OutboundViewModel:ViewModelBase
     {
         public UpdateViewCommandV2 updateViewCommandv2 { set; get; }
-
         public LoadProductsCommand loadProductsCommand { get; set; }
         public LoadClientsListCommand loadClientsListCommand { get; set; }
-
+        public LoadOutboundsCommand loadOutboundsCommand { get; set; }
+        public DeleteOutboundCommand deleteOutboundCommand { get; set; }
         public CreateOutboundOrderCommand createOutboundOrderCommand { get; set; }
-
         public AddtochartCommand addtochartCommand { set; get; }
-
         private ProductModel selectedProduct { get; set; }
         public ProductModel SelectedProduct
         {
@@ -153,6 +152,8 @@ namespace Proyecto_TFG.ViewModels
             addtochartCommand = new AddtochartCommand(this);
             createOutboundOrderCommand = new CreateOutboundOrderCommand(this);
             loadClientsListCommand = new LoadClientsListCommand(this);
+            loadOutboundsCommand = new LoadOutboundsCommand(this);
+            deleteOutboundCommand = new DeleteOutboundCommand(this);
             updateViewCommandv2 = updateViewCommand;
             CharList = new ObservableCollection<ProductModel>();
         }

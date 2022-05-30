@@ -21,11 +21,23 @@ namespace Proyecto_TFG.Commands.Clients
 
         public void Execute(object parameter)
         {
-            outboundViewModel.ClientsList = DataSetHandler.GetClients();
-            if(outboundViewModel.ClientsList is null)
-            {
-                MessageBox.Show("There are no clients to show.");
+            if (parameter.ToString().Equals("outbound")){
+
+                outboundViewModel.ClientsList = DataSetHandler.GetClients();
+                if (outboundViewModel.ClientsList is null)
+                {
+                    MessageBox.Show("There are no clients to show.");
+                }
             }
+            else if (parameter.ToString().Equals("clients"))
+            {
+                clientsViewModel.ClientsList = DataSetHandler.GetClients();
+                if (clientsViewModel.ClientsList is null)
+                {
+                    MessageBox.Show("There are no clients to show.");
+                }
+            }
+           
         }
 
         public OutboundViewModel outboundViewModel { get; set; }
@@ -33,7 +45,11 @@ namespace Proyecto_TFG.Commands.Clients
         {
             this.outboundViewModel = outboundViewModel;
         }
-
+        public ClientsViewModel clientsViewModel { get; set; }
+        public LoadClientsListCommand(ClientsViewModel clientsViewModel)
+        {
+            this.clientsViewModel = clientsViewModel;
+        }
 
     }
 }

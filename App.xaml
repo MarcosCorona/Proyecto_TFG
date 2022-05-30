@@ -7,18 +7,39 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
                 <views:HomeView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
                 <views:LoginView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type viewmodels:InventoryViewModel}">
                 <views:InventoryView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type viewmodels:OutboundViewModel}">
                 <views:OutboundsView/>
             </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewmodels:InboundViewModel}">
+                <views:InboundsView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewmodels:ClientsViewModel}">
+                <views:ClientsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:SupplierViewModel}">
+                <views:SupplierView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:UsersViewModel}">
+                <views:UsersView/>
+            </DataTemplate>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Images/Dictionaries/Images.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

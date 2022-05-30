@@ -15,6 +15,12 @@ namespace Proyecto_TFG.ViewModels
         public UpdateViewCommandV2 updateViewCommandv2 { set; get; }
         public LoadProductsCommand loadProductsCommand { get; set; }
         public LoadProductCommand loadProductCommand { get; set; }
+        public CreateProductCommand createProductCommand { set; get; } 
+        public ClearProductCommand clearProductCommand { get; set; }
+        public DeleteProductCommand deleteProductCommand { set; get; }  
+        public ModifyProductCommand modifyProductCommand { set; get; }
+        public SearchProductCommand searchProductCommand { set; get; }
+
 
         private ProductModel currentProduct { get; set; }
         public ProductModel CurrentProduct
@@ -61,12 +67,19 @@ namespace Proyecto_TFG.ViewModels
             }
         }
 
+        public int searchedId { get; set; }
 
         public InventoryViewModel(UpdateViewCommandV2 updateViewCommand)
         {
             updateViewCommandv2 = updateViewCommand;
             loadProductsCommand = new LoadProductsCommand(this);
             loadProductCommand = new LoadProductCommand(this); 
+            createProductCommand = new CreateProductCommand(this);
+            clearProductCommand = new ClearProductCommand(this);
+            deleteProductCommand = new DeleteProductCommand(this);
+            modifyProductCommand = new ModifyProductCommand(this);
+            searchProductCommand = new SearchProductCommand(this);
+            CurrentProduct = new ProductModel();
         }
     }
 }

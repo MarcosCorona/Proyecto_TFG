@@ -24,7 +24,6 @@ namespace Proyecto_TFG.ViewModels
         public HomeViewModel()
         {
             UpdateViewCommandV2 = new UpdateViewCommandV2(this);
-
         }
     }
 }

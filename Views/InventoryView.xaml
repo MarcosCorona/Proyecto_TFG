@@ -12,18 +12,19 @@
             <i:InvokeCommandAction Command="{Binding loadProductsCommand}" CommandParameter="inventory"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
+    <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="INVENTORY" FontSize="50" Foreground="White" HorizontalAlignment="Center" Height="70" VerticalAlignment="Top"/>
-        <StackPanel Grid.Row="0">
-         
+        <StackPanel Grid.Row="0" Margin="5">
+
+            <TextBlock Text="INVENTORY" FontWeight="Bold" FontStyle="Italic" FontSize="35"  
+                       Foreground="White" HorizontalAlignment="Center" Height="70" VerticalAlignment="Top" FontFamily="Segoe Print"/>
             <ListView x:Name="ProductsList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  
                   ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" 
-                  Foreground="#DDFFFFFF" Margin="12,72,27,119" 
+                  Foreground="#DDFFFFFF" Margin="2" BorderBrush="#FF00F9FF"
                >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
@@ -40,9 +41,10 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            
+
         </StackPanel>
-        <StackPanel Grid.Row="1" >
+        <StackPanel Grid.Row="1" Height="auto">
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -56,45 +58,54 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
-                <TextBlock Text="Products" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
-                
-                <TextBlock Text="Item ID:" TextAlignment="Left" Grid.Column="0" Grid.Row="1" />
-                <TextBlock Text="Name:" TextAlignment="Left" Grid.Column="0" Grid.Row="2"/>
-                <TextBlock Text="Quantity:" TextAlignment="Left" Grid.Column="0" Grid.Row="3" />
-                <TextBlock Text="Price:" TextAlignment="Left" Grid.Column="0" Grid.Row="4" />
-                <TextBlock Text="Description:" TextAlignment="Left" Grid.Column="0" Grid.Row="5" />
 
+                <TextBlock Text="Products" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="20" Foreground="White" FontWeight="Bold" FontFamily="Segoe Print"/>
+                <TextBlock x:Name="txtid" Text="Item id:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="1" Visibility="Collapsed" />
+                <TextBlock Text="Name:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="2" HorizontalAlignment="Left" Margin="60,0,0,0"/>
+                <TextBlock Text="Quantity:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="3" HorizontalAlignment="Left" Margin="60,0,0,0" />
+                <TextBlock Text="Price:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="4" HorizontalAlignment="Left" Margin="60,0,0,0" />
+                <TextBlock Text="Description:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="5" HorizontalAlignment="Left" Margin="60,0,0,0"/>
 
-                <TextBox Grid.Row="1" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.ItemId}" Cursor="Arrow"/>
-                <TextBox Grid.Row="2" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Name}"  />
-                <TextBox Grid.Row="3" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Quantity}" />
-                <TextBox Grid.Row="4" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Price}"/>
-                <TextBox Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Description}"/>
+                <TextBox x:Name="boxid" Grid.Row="1" Grid.Column="1" TextAlignment="Left" Foreground="White" Text="{Binding CurrentProduct.ItemId}" Cursor="Arrow" Visibility="Collapsed"  />
+                <TextBox Foreground="White" Grid.Row="2" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Name}"  />
+                <TextBox Foreground="White" Grid.Row="3" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Quantity}" />
+                <TextBox Foreground="White" Grid.Row="4" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Price}"/>
+                <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Description}"/>
 
             </Grid>
         </StackPanel>
-       
-        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
-            <Button Width="100" Content="Create" Background="#FF3A8CB7"
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top"
+                    HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="btcreate" Width="100" Content="Create" Background="#FF3A8CB7"
                 Command="{Binding createProductCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <Button Width="100" Content="Delete" Background="#FF3A8CB7"
+            <Button x:Name="btedit" Width="150" Content="Modify/Delete" Background="#FF3A8CB7" 
+                Cursor="Hand" Margin="5" Click="editClick" />
+
+            <Button x:Name="btdel" Width="100" Content="Delete" Background="#FF3A8CB7"
                 Command="{Binding deleteProductCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <Button Width="100" Content="Modify" Background="#FF3A8CB7"
+            <Button x:Name="btmod" Width="100" Content="Modify" Background="#FF3A8CB7"
                 Command="{Binding modifyProductCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="15" Width="auto" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" Text="Item ID:"/>
-            <TextBlock HorizontalAlignment="Center" FontSize="15" Width="100" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" Text="{Binding Total}"/>
-            <Button Width="150" Content="Search" Background="#FF3A8CB7" Command="{Binding searchProductCommand}" Cursor="Hand"/>
+            <StackPanel x:Name="searchp" Orientation="Horizontal">
+                <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="15" Width="auto" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" Text="Item ID:"/>
+                <TextBox HorizontalAlignment="Center" FontSize="15" Width="100" 
+                         VerticalAlignment="Center" Foreground="White" FontWeight="Bold" Text="{Binding searchedId}" Cursor="Arrow"/>
+                <Button Width="100" Content="Search" Background="#FF3A8CB7" Command="{Binding searchProductCommand}" Cursor="Hand"/>
+            </StackPanel>
+
+            <Button x:Name="btcancel" Width="100" Content="Decline" Background="#FF3A8CB7" 
+                Cursor="Hand" Margin="5" Command="{Binding clearProductCommand}"  Click="btcancel_Click"  />
+
         </StackPanel>
-        
-        
-        
+
+
+
 
     </Grid>
 </UserControl>

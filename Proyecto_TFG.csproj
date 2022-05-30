@@ -120,12 +120,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Clients\ClearClientCommand.cs" />
+    <Compile Include="Commands\Clients\CreateClientCommand.cs" />
+    <Compile Include="Commands\Clients\DeleteClientCommand.cs" />
+    <Compile Include="Commands\Clients\DeleteSupplierCommand.cs" />
+    <Compile Include="Commands\Clients\LoadClientCommand.cs" />
     <Compile Include="Commands\Clients\LoadClientsListCommand.cs" />
+    <Compile Include="Commands\Clients\ModifyClientCommand.cs" />
+    <Compile Include="Commands\Clients\SearchClientCommand.cs" />
+    <Compile Include="Commands\Inbounds\AddtoInboundChartCommand.cs" />
+    <Compile Include="Commands\Inbounds\CreateInboundOrderCommand.cs" />
+    <Compile Include="Commands\Inbounds\DeleteInboundCommand.cs" />
+    <Compile Include="Commands\Inbounds\LoadInboundsCommand.cs" />
     <Compile Include="Commands\outbounds\AddtochartCommand.cs" />
     <Compile Include="Commands\outbounds\CreateOutboundOrderCommand.cs" />
     <Compile Include="Commands\Login\LoginCommand.cs" />
+    <Compile Include="Commands\outbounds\DeleteOutboundCommand.cs" />
+    <Compile Include="Commands\outbounds\LoadOutboundsCommand.cs" />
+    <Compile Include="Commands\Products\ClearProductCommand.cs" />
+    <Compile Include="Commands\Products\CreateProductCommand.cs" />
+    <Compile Include="Commands\Products\DeleteProductCommand.cs" />
     <Compile Include="Commands\Products\LoadProductCommand.cs" />
     <Compile Include="Commands\Products\LoadProductsCommand.cs" />
+    <Compile Include="Commands\Products\ModifyProductCommand.cs" />
+    <Compile Include="Commands\Products\SearchProductCommand.cs" />
+    <Compile Include="Commands\Supplier\ClearSupplierCommand.cs" />
+    <Compile Include="Commands\Supplier\CreateSupplierCommand.cs" />
+    <Compile Include="Commands\Supplier\LoadSupplierCommand.cs" />
+    <Compile Include="Commands\Supplier\LoadSuppliersListCommand.cs" />
+    <Compile Include="Commands\Supplier\ModifySupplierCommand.cs" />
+    <Compile Include="Commands\Supplier\SearchSupplierCommand.cs" />
+    <Compile Include="Commands\Users\ClearUserCommand.cs" />
+    <Compile Include="Commands\Users\CreateUserCommand.cs" />
+    <Compile Include="Commands\Users\DeleteUserCommand.cs" />
+    <Compile Include="Commands\Users\LoadUserCommand.cs" />
+    <Compile Include="Commands\Users\LoadUsersCommand.cs" />
+    <Compile Include="Commands\Users\ModifyUserCommand.cs" />
+    <Compile Include="Commands\Users\SearchUserCommand.cs" />
     <Compile Include="Commands\viewNavegation\UpdateViewCommand.cs" />
     <Compile Include="Commands\viewNavegation\UpdateViewCommandV2.cs" />
     <Compile Include="DataSet\DataSet.cs">
@@ -137,20 +168,36 @@
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DataSetHandler.cs" />
+    <Compile Include="Models\AddresModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\InboundDetailModel.cs" />
+    <Compile Include="Models\InboundModel.cs" />
+    <Compile Include="Models\JobModel.cs" />
+    <Compile Include="Models\OutboundDetailModel.cs" />
     <Compile Include="Models\OutboundModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Services\DBHandler.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\InboundsViewModel.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OutboundViewModel.cs" />
+    <Compile Include="ViewModels\SupplierViewModel.cs" />
+    <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ClientsView.xaml.cs">
+      <DependentUpon>ClientsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InboundsView.xaml.cs">
+      <DependentUpon>InboundsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InventoryView.xaml.cs">
       <DependentUpon>InventoryView.xaml</DependentUpon>
@@ -160,6 +207,12 @@
     </Compile>
     <Compile Include="Views\OutboundsView.xaml.cs">
       <DependentUpon>OutboundsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SupplierView.xaml.cs">
+      <DependentUpon>SupplierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsersView.xaml.cs">
+      <DependentUpon>UsersView.xaml</DependentUpon>
     </Compile>
     <Page Include="Images\Dictionaries\Images.xaml">
       <SubType>Designer</SubType>
@@ -177,7 +230,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ClientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InboundsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +251,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OutboundsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SupplierView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

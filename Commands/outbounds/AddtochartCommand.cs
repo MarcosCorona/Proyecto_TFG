@@ -94,5 +94,6 @@ namespace Proyecto_TFG.Commands
         {
             this.outboundViewModel = outboundViewModel;
         }
+   
     }
 }

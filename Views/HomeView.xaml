@@ -10,18 +10,19 @@
         <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
     </UserControl.Background>
     <StackPanel>
-        <TextBlock Text="HOME VIEW" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock Text="" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="257*"/>
+                <ColumnDefinition Width="493*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Width="200" Height="380" Orientation="Vertical" VerticalAlignment="Top" Margin="0,61,0,0">
                 <StackPanel.Background>
                     <SolidColorBrush Color="#FF221D3A" Opacity="0.5"/>
                 </StackPanel.Background>
 
-                <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Outbounds" 
+                <Button x:Name="outboundsbt"  Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Outbounds" 
                  Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
                 Command="{Binding UpdateViewCommandV2}" CommandParameter="outbound" Cursor="Hand" BorderBrush="#FF3A8CB7"
                         >
@@ -29,7 +30,7 @@
                         <SolidColorBrush  Color="#FF05B2BF" Opacity="0.5"/>
                     </Button.Background>
                 </Button>
-                <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Inbounds" 
+                <Button x:Name="inboundsbt" Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Inbounds" 
                  Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
                 Command="{Binding UpdateViewCommandV2}" CommandParameter="inbounds" Cursor="Hand" BorderBrush="#FF3A8CB7"
                         >
@@ -38,7 +39,7 @@
                     </Button.Background>
                 </Button>
 
-                <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Inventory" 
+                <Button x:Name="inventorybt" Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Inventory" 
                  Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
                 Command="{Binding UpdateViewCommandV2}" CommandParameter="inventory" Cursor="Hand" BorderBrush="#FF3A8CB7"
                         >
@@ -47,7 +48,7 @@
                     </Button.Background>
                 </Button>
 
-                <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Clients" 
+                <Button x:Name="clientsbt" Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Clients" 
                  Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
                 Command="{Binding UpdateViewCommandV2}" CommandParameter="clients" Cursor="Hand" BorderBrush="#FF3A8CB7"
                         >
@@ -56,7 +57,7 @@
                     </Button.Background>
                 </Button>
 
-                <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Suppliers" 
+                <Button x:Name="suppliersbt"  Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Suppliers" 
                  Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
                 Command="{Binding UpdateViewCommandV2}" CommandParameter="suppliers" Cursor="Hand" BorderBrush="#FF3A8CB7"
                         >
@@ -65,9 +66,9 @@
                     </Button.Background>
                 </Button>
 
-                <Button Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Employees" 
+                <Button x:Name="employeesbt"  Grid.ColumnSpan="2" Grid.Row="1"  VerticalAlignment="Center" Content="Employees" 
                  Width="180" FontSize="15" FontWeight="Bold" Foreground="White" Margin="10" 
-                Command="{Binding UpdateViewCommandV2}" CommandParameter="employees" Cursor="Hand" BorderBrush="#FF3A8CB7"
+                Command="{Binding UpdateViewCommandV2}" CommandParameter="users" Cursor="Hand" BorderBrush="#FF3A8CB7"
                         >
                     <Button.Background>
                         <SolidColorBrush  Color="#FF05B2BF" Opacity="0.5"/>
@@ -81,7 +82,7 @@
 
 
 
-            <StackPanel Grid.Column="1" Width="750">
+            <StackPanel Grid.Column="1" Width="750" Grid.ColumnSpan="2">
                 <ContentControl Content="{Binding SelectedViewModel}" Margin="30" />
             </StackPanel>
         </Grid>
