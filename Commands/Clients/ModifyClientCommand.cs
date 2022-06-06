@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +24,14 @@ namespace Proyecto_TFG.Commands.Clients
         public void Execute(object parameter)
         {
             ClientModel client = clientsViewModel.CurrentClient;
-            if (client != null)
+            if (client != null && client.ClientId >0 && client.Name != "" && client.Telephone != "" && client.Email != "" && client.NIF != "")
             {
                 foreach (ClientModel c in clientsViewModel.ClientsList)
                 {
                     if (c.ClientId.Equals(client.ClientId))
                     {
                         DataSetHandler.modifyClient(client.ClientId, client.Name, client.Telephone, client.Email, client.NIF);
-                        MessageBox.Show("The client " + client.Name + " has been modified.");
+                        modified(client.Name);   
                         clientsViewModel.ClientsList = DataSetHandler.GetClients();
                         clientsViewModel.CurrentClient = new ClientModel();
                         break;
@@ -39,10 +40,18 @@ namespace Proyecto_TFG.Commands.Clients
             }
             else
             {
-                MessageBox.Show("Error modifying the user, please try again.");
+                error();
             }
         }
 
+        private void modified(string name)
+        {
+            bool? Result = new MessageBoxCustom("The client " + name + " has been modified.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+        private void error()
+        {
+            bool? Result = new MessageBoxCustom("The client has not been modified, check the values.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
         public ClientsViewModel clientsViewModel { get; set; }
         public ModifyClientCommand(ClientsViewModel clientsViewModel)
         {

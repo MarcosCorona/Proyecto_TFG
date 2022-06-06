@@ -1,5 +1,6 @@
 ﻿using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +41,22 @@ namespace Proyecto_TFG.Commands.Users
                 }
                 if (searchedok == false)
                 {
-                    MessageBox.Show("The user doesn't exists");
+                    dexists();
                 }
             }
             else
             {
-                MessageBox.Show("Error searching the user, please try again.");
+                error();
             }
+        }
+
+        private void dexists()
+        {
+            bool? Result = new MessageBoxCustom("The user doesn't exists", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void error()
+        {
+            bool? Result = new MessageBoxCustom("Error searching the user, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
         public UsersViewModel usersViewModel { get; set; }

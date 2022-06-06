@@ -10,14 +10,18 @@
         <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
     </UserControl.Background>
     <StackPanel>
-        <TextBlock Text="" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="White"/>
+
+        <Button Content="LOGOUT" FontWeight="Bold" 
+                Background="#FF05B2BF" HorizontalAlignment="Right" 
+                Margin="10" Width="150" Command="{Binding UpdateViewCommand}" CommandParameter="logout" Cursor="Hand"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="257*"/>
-                <ColumnDefinition Width="493*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition
+            Width="0*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Width="200" Height="380" Orientation="Vertical" VerticalAlignment="Top" Margin="0,61,0,0">
+            <StackPanel Grid.Column="0" Height="380" Orientation="Vertical" VerticalAlignment="Top" Margin="0,61,0,0">
                 <StackPanel.Background>
                     <SolidColorBrush Color="#FF221D3A" Opacity="0.5"/>
                 </StackPanel.Background>
@@ -74,15 +78,9 @@
                         <SolidColorBrush  Color="#FF05B2BF" Opacity="0.5"/>
                     </Button.Background>
                 </Button>
-
-
-
-
             </StackPanel>
 
-
-
-            <StackPanel Grid.Column="1" Width="750" Grid.ColumnSpan="2">
+            <StackPanel Grid.Column="1">
                 <ContentControl Content="{Binding SelectedViewModel}" Margin="30" />
             </StackPanel>
         </Grid>

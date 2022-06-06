@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Proyecto_TFG.Commands.Clients
                     if (c.ClientId.Equals(client.ClientId))
                     {
                         DataSetHandler.deleteClient(client.ClientId);
-                        MessageBox.Show("The client " + client.Name + " has been deleted.");
+                        deleted(client.Name);
                         clientsViewModel.ClientsList = DataSetHandler.GetClients();
                         clientsViewModel.CurrentClient = new ClientModel();
                         break;
@@ -39,10 +40,18 @@ namespace Proyecto_TFG.Commands.Clients
             }
             else
             {
-                MessageBox.Show("Error deleting the client, please try again.");
+               gerror();
             }
         }
+        private void deleted(string name)
+        {
+            bool? Result = new MessageBoxCustom("The client "+ name + " has been deleted", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
 
+        private void gerror()
+        {
+            bool? Result = new MessageBoxCustom("Error deleting the client, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
         public ClientsViewModel clientsViewModel { get; set; }
         public DeleteClientCommand(ClientsViewModel clientsViewModel)
         {

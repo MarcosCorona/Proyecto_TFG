@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Proyecto_TFG.Views"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             mc:Ignorable="d" d:DesignWidth="950" Height="750">
+             mc:Ignorable="d" d:DesignWidth="950" Height="600">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding loadProductsCommand}" CommandParameter="outbound"/>
@@ -14,7 +14,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top">
             <Button Content="Create Order" Width="150" Margin="20" Background="#FF3A8CB7" Click="createClick" />
@@ -22,7 +22,7 @@
         </StackPanel>
 
 
-        <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Collapsed" Grid.RowSpan="2" >
+        <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Visible" Grid.RowSpan="2" >
 
             <ListView x:Name="outboundList"  MaxHeight="150"  MaxWidth="750" FontSize="12" 
                       ItemsSource="{Binding OutboundList}" SelectedItem="{Binding Outbound}" Foreground="#DDFFFFFF">
@@ -52,9 +52,17 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
+                
+                <Button Width="150" Content="Consult as PDF." HorizontalAlignment="Right" Margin="10" Background="#FF3A8CB7" Cursor="Hand">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="GotFocus">
+                            <i:InvokeCommandAction Command="{Binding generatePDFCommand}" CommandParameter="{Binding ElementName=outboundList, Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Top" Height="649" Visibility="Visible" >
+        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Top" Height="450" Visibility="Collapsed" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Select a client:" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="15"
                            Foreground="White" FontWeight="Bold" FontFamily="Segoe Print" Margin="2"

@@ -21,6 +21,7 @@ namespace Proyecto_TFG.ViewModels
         public DeleteInboundCommand deleteInboundCommand { get; set; }
         public CreateInboundOrderCommand createInboundCommand { get; set; }
         public AddtoInboundChartCommand addtochartCommand { set; get; }
+        public GenerateInbPDFCommand generateInbPDFCommand { get; set; }
         private ProductModel selectedProduct { get; set; }
         public ProductModel SelectedProduct
         {
@@ -155,6 +156,7 @@ namespace Proyecto_TFG.ViewModels
             loadSuppliersListCommand = new LoadSuppliersListCommand(this);
             loadInboundsCommand = new LoadInboundsCommand(this);
             deleteInboundCommand = new DeleteInboundCommand(this);
+            generateInbPDFCommand = new GenerateInbPDFCommand(this);
             updateViewCommandv2 = updateViewCommand;
             CharList = new ObservableCollection<ProductModel>();
         }

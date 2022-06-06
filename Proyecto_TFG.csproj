@@ -21,7 +21,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -57,6 +57,9 @@
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.5.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>packages\MaterialDesignThemes.4.5.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -123,7 +126,7 @@
     <Compile Include="Commands\Clients\ClearClientCommand.cs" />
     <Compile Include="Commands\Clients\CreateClientCommand.cs" />
     <Compile Include="Commands\Clients\DeleteClientCommand.cs" />
-    <Compile Include="Commands\Clients\DeleteSupplierCommand.cs" />
+    <Compile Include="Commands\Supplier\DeleteSupplierCommand.cs" />
     <Compile Include="Commands\Clients\LoadClientCommand.cs" />
     <Compile Include="Commands\Clients\LoadClientsListCommand.cs" />
     <Compile Include="Commands\Clients\ModifyClientCommand.cs" />
@@ -131,11 +134,13 @@
     <Compile Include="Commands\Inbounds\AddtoInboundChartCommand.cs" />
     <Compile Include="Commands\Inbounds\CreateInboundOrderCommand.cs" />
     <Compile Include="Commands\Inbounds\DeleteInboundCommand.cs" />
+    <Compile Include="Commands\Inbounds\GenerateInbPDFCommand.cs" />
     <Compile Include="Commands\Inbounds\LoadInboundsCommand.cs" />
     <Compile Include="Commands\outbounds\AddtochartCommand.cs" />
     <Compile Include="Commands\outbounds\CreateOutboundOrderCommand.cs" />
     <Compile Include="Commands\Login\LoginCommand.cs" />
     <Compile Include="Commands\outbounds\DeleteOutboundCommand.cs" />
+    <Compile Include="Commands\outbounds\GeneratePDFCommand.cs" />
     <Compile Include="Commands\outbounds\LoadOutboundsCommand.cs" />
     <Compile Include="Commands\Products\ClearProductCommand.cs" />
     <Compile Include="Commands\Products\CreateProductCommand.cs" />
@@ -187,6 +192,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OutboundViewModel.cs" />
+    <Compile Include="ViewModels\PDFViewModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -205,8 +211,14 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessageBoxCustom.xaml.cs">
+      <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\OutboundsView.xaml.cs">
       <DependentUpon>OutboundsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PDFView.xaml.cs">
+      <DependentUpon>PDFView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SupplierView.xaml.cs">
       <DependentUpon>SupplierView.xaml</DependentUpon>
@@ -250,7 +262,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MessageBoxCustom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\OutboundsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PDFView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,6 +301,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\InboundPDF.rdlc" />
+    <EmbeddedResource Include="Reporting\OutboundPDF.rdlc" />
     <None Include="DataSet\DataSet.xsc">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
@@ -301,9 +323,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\usuario.png" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,11 @@ namespace Proyecto_TFG.Commands.Inbounds
 
             if (s is null)
             {
-                MessageBox.Show("Select a client.");
+                sclient();
             }
             else if (total <= 0)
             {
-                MessageBox.Show("Total is 0, please, select a product.");
+                charlist();
             }
             else
             {
@@ -49,15 +50,33 @@ namespace Proyecto_TFG.Commands.Inbounds
                     {
                         DataSetHandler.insertDetail(p.ItemId, p.Description, p.Quantity, p.Price);
                     }
-                    MessageBox.Show("Outbound order has been created.");
+                    ocreated();
                     inboundViewModel.InboundList = DataSetHandler.GetInbounds();
                 }
                 else
                 {
-                    MessageBox.Show("There is a problem creating the order, please check again.");
+                    error();
                 }
             }
         }
+
+        private void sclient()
+        {
+            bool? Result = new MessageBoxCustom("Select a client.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void charlist()
+        {
+            bool? Result = new MessageBoxCustom("Your product list is empty.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void ocreated()
+        {
+            bool? Result = new MessageBoxCustom("Inbound order has been created.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+        private void error()
+        {
+            bool? Result = new MessageBoxCustom("There is a problem creating the order, please check again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+
         public InboundViewModel inboundViewModel { get; set; }
         public CreateInboundOrderCommand(InboundViewModel inboundViewModel)
         {

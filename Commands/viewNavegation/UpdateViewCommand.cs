@@ -29,7 +29,10 @@ namespace Proyecto_TFG.Commands
 
                 if (viewName.Equals("home"))
                 {
-                    mainViewModel.SelectedViewModel = new HomeViewModel();
+                    mainViewModel.SelectedViewModel = new HomeViewModel(this);
+                }else if (viewName.Equals("logout"))
+                {
+                    mainViewModel.SelectedViewModel = new LoginViewModel(this);
                 }
             }
         }
@@ -42,7 +45,5 @@ namespace Proyecto_TFG.Commands
             this.mainViewModel = mainViewModel;
             mainViewModel.SelectedViewModel = new LoginViewModel(this);
         }
-
-
     }
 }

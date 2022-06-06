@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,29 @@ namespace Proyecto_TFG.Commands.Supplier
             {
                 foreach (SupplierModel s in supplierViewModel.SupplierList)
                 {
-                    if (s.SupplierId.Equals(supplier.SupplierId))
+                    if (supplier.SupplierId.Equals(supplier.SupplierId))
                     {
-                        MessageBox.Show("The client already exists.");
+                        id();
+                        break;
+                    }
+                    else if (supplier.Name is null || supplier.Name.Equals(""))
+                    {
+                        name();
+                        break;
+                    }
+                    else if (supplier.Telephone is null || supplier.Telephone.Equals(""))
+                    {
+                        telephone();
+                        break;
+                    }
+                    else if (supplier.Email is null || supplier.Email.Equals(""))
+                    {
+                        email();
+                        break;
+                    }
+                    else if (supplier.NIF is null || supplier.NIF.Equals("") || supplier.NIF.Length < 10)
+                    {
+                        nif();
                         break;
                     }
                     else
@@ -37,15 +58,44 @@ namespace Proyecto_TFG.Commands.Supplier
                         DataSetHandler.insertSupplier(supplier.SupplierId, supplier.Name, supplier.Telephone, supplier.Email, supplier.NIF);
                         supplierViewModel.SupplierList = DataSetHandler.GetSuppliers();
                         supplierViewModel.CurrentSupplier = new SupplierModel();
-                        MessageBox.Show("The supplier " + supplier.Name + " has been created.");
+                        created(supplier.Name);
                         break;
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Error creating the supplier, please try again.");
+                gerror();
             }
+        }
+        private void id()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the supplier already exists", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void name()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the supplier name", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void telephone()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the supplier telephone", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void email()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the supplier email", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void nif()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the supplier nif", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+
+        private void created(string name)
+        {
+            bool? Result = new MessageBoxCustom("The supplier " + name + " has been created.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+        private void gerror()
+        {
+            bool? Result = new MessageBoxCustom("Error creating the supplier, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
         public SupplierViewModel supplierViewModel { get; set; }

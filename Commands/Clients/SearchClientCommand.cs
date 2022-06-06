@@ -1,5 +1,6 @@
 ﻿using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +41,21 @@ namespace Proyecto_TFG.Commands.Clients
                 }
                 if (searchedok == false)
                 {
-                    MessageBox.Show("The client doesn't exists");
+                    dexists();
                 }
             }
             else
             {
-                MessageBox.Show("Error searching the client, please try again.");
+                error();
             }
+        }
+        private void dexists()
+        {
+            bool? Result = new MessageBoxCustom("The client doesn't exists", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void error()
+        {
+            bool? Result = new MessageBoxCustom("Error searching the client, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         public ClientsViewModel clientsViewModel { get; set; }
         public SearchClientCommand(ClientsViewModel clientsViewModel)

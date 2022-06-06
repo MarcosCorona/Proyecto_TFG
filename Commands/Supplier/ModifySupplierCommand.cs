@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Proyecto_TFG.Commands.Supplier
                     if (s.SupplierId.Equals(supplier.SupplierId))
                     {
                         DataSetHandler.modifySupplier(supplier.SupplierId, supplier.Name, supplier.Telephone, supplier.Email, supplier.NIF);
-                        MessageBox.Show("The supplier " + supplier.Name + " has been modified.");
+                        modified(supplier.Name);
                         supplierViewModel.SupplierList = DataSetHandler.GetSuppliers();
                         supplierViewModel.CurrentSupplier = new SupplierModel();
                         break;
@@ -39,8 +40,17 @@ namespace Proyecto_TFG.Commands.Supplier
             }
             else
             {
-                MessageBox.Show("Error modifying the product, please try again.");
+                error();
             }
+        }
+
+        private void modified(string name)
+        {
+            bool? Result = new MessageBoxCustom("The supplier " + name + " has been modified.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+        private void error()
+        {
+            bool? Result = new MessageBoxCustom("The supplier has not been modified, check the values.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         public SupplierViewModel supplierViewModel { get; set; }
         public ModifySupplierCommand(SupplierViewModel supplierViewModel)

@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Proyecto_TFG.Commands.Users
                     if (u.dni.Equals(user.dni))
                     {
                         DataSetHandler.deleteUser(user.dni);
-                        MessageBox.Show("The user " + user.name + " has been deleted.");
+                        deleted(user.name);
                         usersViewModel.UserList = DataSetHandler.GetPerson();
                         usersViewModel.CurrentUser = new PersonModel();
                         break;
@@ -39,8 +40,18 @@ namespace Proyecto_TFG.Commands.Users
             }
             else
             {
-                MessageBox.Show("Error deleting the client, please try again.");
+                gerror();
             }
+        }
+
+        private void deleted(string name)
+        {
+            bool? Result = new MessageBoxCustom("The user " + name + " has been deleted", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+
+        private void gerror()
+        {
+            bool? Result = new MessageBoxCustom("Error deleting the user, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         public UsersViewModel usersViewModel { get; set; }
         public DeleteUserCommand(UsersViewModel usersViewModel)

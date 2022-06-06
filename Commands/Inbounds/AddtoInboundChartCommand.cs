@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,15 +78,23 @@ namespace Proyecto_TFG.Commands.Inbounds
                     }
                     else
                     {
-                        MessageBox.Show("Quantity most be positive.");
+                        qpositive();
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Select a product.");
+                sproduct();
             }
 
+        }
+        private void qpositive()
+        {
+            bool? Result = new MessageBoxCustom("Quantity most be positive.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void sproduct()
+        {
+            bool? Result = new MessageBoxCustom("Select a product.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         public InboundViewModel inboundViewModel { get; set; }
         public AddtoInboundChartCommand(InboundViewModel inboundViewModel)

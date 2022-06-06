@@ -40,6 +40,10 @@
                 <views:UsersView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodels:PDFViewModel}">
+                <views:PDFView/>
+            </DataTemplate>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Images/Dictionaries/Images.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

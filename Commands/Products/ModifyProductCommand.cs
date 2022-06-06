@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Proyecto_TFG.Commands.Products
                     if (p.ItemId.Equals(product.ItemId))
                     {
                         DataSetHandler.modifyProduct(product.ItemId,product.Name,product.Quantity,product.Description,product.Price);
-                        MessageBox.Show("The product " + product.Name + " has been modified.");
+                        modified(product.Name);
                         inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
                         inventoryViewModel.CurrentProduct = new ProductModel();
                         break;
@@ -39,8 +40,17 @@ namespace Proyecto_TFG.Commands.Products
             }
             else
             {
-                MessageBox.Show("Error modifying the product, please try again.");
+                error();
             }
+        }
+
+        private void modified(string name)
+        {
+            bool? Result = new MessageBoxCustom("The product " + name + " has been modified.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+        private void error()
+        {
+            bool? Result = new MessageBoxCustom("The product has not been modified, check the values.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         public InventoryViewModel inventoryViewModel { get; set; }
 

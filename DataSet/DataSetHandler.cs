@@ -30,7 +30,12 @@ namespace Proyecto_TFG.Handlers
 
         private static SupplierTableAdapter supplierAdapter = new SupplierTableAdapter();
 
-       
+        private static OutboundPDFTableAdapter opdfAdapter = new OutboundPDFTableAdapter();
+
+        private static InboundPDFTableAdapter ipdfAdapter = new InboundPDFTableAdapter();
+
+
+
 
         public static ObservableCollection<PersonModel> GetPerson()
         {
@@ -55,6 +60,18 @@ namespace Proyecto_TFG.Handlers
             return personsList;
         }
 
+
+        public static PersonModel person = new PersonModel();
+        public static void setUser(PersonModel p)
+        {
+            person = p;
+            getUser();
+        }
+
+        public static PersonModel getUser()
+        {
+            return person;
+        }
 
         internal static ObservableCollection<InboundDetailModel> getInboundDetails()
         {
@@ -382,7 +399,16 @@ namespace Proyecto_TFG.Handlers
             personAdapter.UpdateUser(dni, name, lastname, email, password, date, job, address, city, dni);
         }
 
+        public static DataTable getOutboundDataByOrderId(int orderid)
+        {
+            return opdfAdapter.GetDataById(orderid);
+        }
 
+        public static DataTable getInboundDataByOrderID(int orderid)
+        {
+            return ipdfAdapter.GetDataById(orderid);
+
+        }
 
 
     }

@@ -1,4 +1,5 @@
-﻿using Proyecto_TFG.ViewModels;
+﻿using Proyecto_TFG.Models;
+using Proyecto_TFG.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace Proyecto_TFG.Commands
         {
             return true;
         }
+
+        public PDFViewModel pDFViewModel;
 
         public void Execute(object parameter)
         {
@@ -45,7 +48,15 @@ namespace Proyecto_TFG.Commands
                 }else if (viewName.Equals("users"))
                 {
                     homeViewModel.SelectedViewModel = new UsersViewModel(this);
+                }else if (viewName.Equals("pdfOutbound"))
+                {
+                    homeViewModel.SelectedViewModel = pDFViewModel;
                 }
+                else if (viewName.Equals("pdfInbound"))
+                {
+                    homeViewModel.SelectedViewModel = pDFViewModel;
+                }
+           
             }
         }
 
@@ -54,6 +65,8 @@ namespace Proyecto_TFG.Commands
         public UpdateViewCommandV2(HomeViewModel homeViewModel)
         {
             this.homeViewModel = homeViewModel;
+            pDFViewModel = new PDFViewModel(this);
+
         }
     }
 }

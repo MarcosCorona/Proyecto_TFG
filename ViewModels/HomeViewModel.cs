@@ -1,4 +1,5 @@
 ﻿using Proyecto_TFG.Commands;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace Proyecto_TFG.ViewModels
 {
-    class HomeViewModel:ViewModelBase
+    class HomeViewModel : ViewModelBase
     {
         private ViewModelBase selectedViewModel;
         public ViewModelBase SelectedViewModel
@@ -17,13 +18,18 @@ namespace Proyecto_TFG.ViewModels
             set { selectedViewModel = value; OnPropertyChanged(nameof(SelectedViewModel)); }
         }
 
+        public ICommand LoginCommand { get; set; }  
+
         public ICommand UpdateViewCommandV2 { get; set; }
 
 
+        public LoginCommand loginCommand { get; set; }
 
-        public HomeViewModel()
+        public UpdateViewCommand UpdateViewCommand { set; get; }
+        public HomeViewModel(UpdateViewCommand updateViewCommand)
         {
             UpdateViewCommandV2 = new UpdateViewCommandV2(this);
+            UpdateViewCommand = updateViewCommand;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Proyecto_TFG.Handlers;
 using Proyecto_TFG.Models;
 using Proyecto_TFG.ViewModels;
+using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,11 +39,25 @@ namespace Proyecto_TFG.Commands.Inbounds
                         }
                         DataSetHandler.removeInbound((int)order.OrderId);
                         inboundViewModel.InboundList = DataSetHandler.GetInbounds();
-                        MessageBox.Show("Order deleted.");
+                        success();
                     }
                 }
             }
+            else
+            {
+                gerror();
+            }
         }
+
+        private void gerror()
+        {
+            bool? Result = new MessageBoxCustom("Error deleting the order, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void success()
+        {
+            bool? Result = new MessageBoxCustom("Order deleted.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+
         public InboundViewModel inboundViewModel { get; set; }
         public DeleteInboundCommand(InboundViewModel inboundViewModel)
         {

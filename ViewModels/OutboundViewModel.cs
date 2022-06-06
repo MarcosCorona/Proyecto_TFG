@@ -20,6 +20,9 @@ namespace Proyecto_TFG.ViewModels
         public DeleteOutboundCommand deleteOutboundCommand { get; set; }
         public CreateOutboundOrderCommand createOutboundOrderCommand { get; set; }
         public AddtochartCommand addtochartCommand { set; get; }
+
+        public GeneratePDFCommand generatePDFCommand { get; set; }
+
         private ProductModel selectedProduct { get; set; }
         public ProductModel SelectedProduct
         {
@@ -154,6 +157,7 @@ namespace Proyecto_TFG.ViewModels
             loadClientsListCommand = new LoadClientsListCommand(this);
             loadOutboundsCommand = new LoadOutboundsCommand(this);
             deleteOutboundCommand = new DeleteOutboundCommand(this);
+            generatePDFCommand = new GeneratePDFCommand(this);
             updateViewCommandv2 = updateViewCommand;
             CharList = new ObservableCollection<ProductModel>();
         }

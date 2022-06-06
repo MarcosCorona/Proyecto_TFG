@@ -1,4 +1,5 @@
 ﻿using Proyecto_TFG.Commands;
+using Proyecto_TFG.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace Proyecto_TFG.ViewModels
 {
-    class LoginViewModel: ViewModelBase
+    class LoginViewModel : ViewModelBase
     {
 
         public string username { get; set; }
@@ -18,8 +19,18 @@ namespace Proyecto_TFG.ViewModels
 
         public UpdateViewCommand UpdateViewCommand { set; get; }
 
-        public LoginCommand LoginCommand { set; get; }  
+        public LoginCommand LoginCommand { set; get; }
 
+        private PersonModel currentPerson {get;set;}
+        public PersonModel CurrentPerson
+        {
+            get { return currentPerson; }
+            set
+            {
+                currentPerson = value;
+                OnPropertyChanged(nameof(CurrentPerson));
+            }
+        }
         public LoginViewModel(UpdateViewCommand updateViewCommand )
         {
             UpdateViewCommand = updateViewCommand;
