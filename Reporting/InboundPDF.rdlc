@@ -324,7 +324,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Total.Value</Value>
+                              <Value>= Fields!ProductQuantity.Value * Fields!ProductPrice.Value</Value>
                               <Style />
                             </TextRun>
                             <TextRun>
@@ -397,7 +397,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>=Sum(Fields!Total.Value, "InboundPDF")</Value>
+                <Value>=Fields!Total.Value</Value>
                 <Style>
                   <FontSize>20pt</FontSize>
                   <FontWeight>Bold</FontWeight>
