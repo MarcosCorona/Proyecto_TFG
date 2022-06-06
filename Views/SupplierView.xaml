@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="5">
 
-            <TextBlock Text="Suppliers Management" FontWeight="Bold" FontStyle="Italic" FontSize="35"  
+            <TextBlock Text="Suppliers Management" FontWeight="Bold" FontSize="35"  
                        Foreground="White" HorizontalAlignment="Center" Height="70" VerticalAlignment="Top" FontFamily="Segoe Print"/>
             <ListView x:Name="SupplierList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  
                   ItemsSource="{Binding SupplierList}" SelectedItem="{Binding Supplier}" 

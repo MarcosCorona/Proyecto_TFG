@@ -4,6 +4,7 @@ using Proyecto_TFG.ViewModels;
 using Proyecto_TFG.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,8 +49,9 @@ namespace Proyecto_TFG.Commands.Inbounds
                 {
                     foreach (ProductModel p in inboundViewModel.CharList)
                     {
-                        DataSetHandler.insertDetail(p.ItemId, p.Description, p.Quantity, p.Price);
+                        DataSetHandler.insertInboundDetail(p.ItemId, p.Description, p.Quantity, p.Price);
                     }
+                    inboundViewModel.CharList = new ObservableCollection<ProductModel>();
                     ocreated();
                     inboundViewModel.InboundList = DataSetHandler.GetInbounds();
                 }

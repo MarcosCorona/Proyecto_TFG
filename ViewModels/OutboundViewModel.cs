@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_TFG.ViewModels
 {
-    class OutboundViewModel:ViewModelBase
+    class OutboundViewModel : ViewModelBase
     {
         public UpdateViewCommandV2 updateViewCommandv2 { set; get; }
         public LoadProductsCommand loadProductsCommand { get; set; }
@@ -20,6 +20,7 @@ namespace Proyecto_TFG.ViewModels
         public DeleteOutboundCommand deleteOutboundCommand { get; set; }
         public CreateOutboundOrderCommand createOutboundOrderCommand { get; set; }
         public AddtochartCommand addtochartCommand { set; get; }
+        public RemoveSelectedProductOCommand removeSelectedProductOCommand{ get; set;}
 
         public GeneratePDFCommand generatePDFCommand { get; set; }
 
@@ -158,6 +159,7 @@ namespace Proyecto_TFG.ViewModels
             loadOutboundsCommand = new LoadOutboundsCommand(this);
             deleteOutboundCommand = new DeleteOutboundCommand(this);
             generatePDFCommand = new GeneratePDFCommand(this);
+            removeSelectedProductOCommand = new RemoveSelectedProductOCommand(this);
             updateViewCommandv2 = updateViewCommand;
             CharList = new ObservableCollection<ProductModel>();
         }

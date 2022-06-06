@@ -126,6 +126,8 @@
     <Compile Include="Commands\Clients\ClearClientCommand.cs" />
     <Compile Include="Commands\Clients\CreateClientCommand.cs" />
     <Compile Include="Commands\Clients\DeleteClientCommand.cs" />
+    <Compile Include="Commands\Inbounds\RemoveSelectedProductICommand.cs" />
+    <Compile Include="Commands\outbounds\RemoveSelectedProductOCommand.cs" />
     <Compile Include="Commands\Supplier\DeleteSupplierCommand.cs" />
     <Compile Include="Commands\Clients\LoadClientCommand.cs" />
     <Compile Include="Commands\Clients\LoadClientsListCommand.cs" />

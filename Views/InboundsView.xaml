@@ -23,7 +23,7 @@
         </StackPanel>
 
 
-        <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Visible" Grid.RowSpan="2" >
+        <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Collapsed" Grid.RowSpan="2" >
 
             <ListView x:Name="inboundList"  MaxHeight="150"  MaxWidth="750" FontSize="12" 
                       ItemsSource="{Binding InboundList}" SelectedItem="{Binding Inbound}" Foreground="#DDFFFFFF">
@@ -63,7 +63,7 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,39,0" VerticalAlignment="Top" Height="450" Visibility="Collapsed" >
+        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,39,0" VerticalAlignment="Top" Height="450" Visibility="Visible" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Select a supplier:" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="15"
                            Foreground="White" FontWeight="Bold" FontFamily="Segoe Print" Margin="2"
@@ -114,6 +114,8 @@
                     <TextBlock  HorizontalAlignment="Center" FontSize="15" Width="auto" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" Text="Total: "/>
                     <TextBlock HorizontalAlignment="Center" FontSize="15" Width="100" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" Text="{Binding Total}"/>
                     <Button Width="150" Content="Create order" Background="#FF3A8CB7" Command="{Binding createInboundCommand}" Cursor="Hand"/>
+                    <Button Width="150" Content="Remove product" Background="#FF3A8CB7" Command="{Binding removeSelectedProductICommand}" CommandParameter="{Binding SelectedItem, ElementName=charList}" 
+                            Margin="5" Cursor="Hand"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

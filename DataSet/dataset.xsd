@@ -783,11 +783,11 @@ WHERE OutboundOrders.OrderId = @OrderId</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InboundPDFTableAdapter" GeneratorDataComponentClassName="InboundPDFTableAdapter" Name="InboundPDF" UserDataComponentName="InboundPDFTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="_2dam06ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="_2dam06ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Supplier.SupplierId ,Supplier.Name, Supplier.Telephone, Supplier.Email, Supplier.NIF, InboundDetail.DetailId, InboundDetail.OrderId, InboundDetail.ItemId, InboundDetail.ProductDescription, InboundDetail.ProductPrice, 
-                        InboundDetail.ProductQuantity, Inbounds.OrderId AS Expr1,Inbounds.SupplierId AS Expr2, Inbounds.OrderDate, Inbounds.Total
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        Supplier.SupplierId, Supplier.Name, Supplier.NIF, Supplier.Email, Supplier.Telephone, Inbounds.OrderId, Inbounds.SupplierId AS Expr1, Inbounds.OrderDate, Inbounds.Total, InboundDetail.DetailId, 
+                         InboundDetail.OrderId AS Expr2, InboundDetail.ItemId, InboundDetail.ProductDescription, InboundDetail.ProductPrice, InboundDetail.ProductQuantity
 FROM            Supplier INNER JOIN
                          Inbounds ON Supplier.SupplierId = Inbounds.SupplierId INNER JOIN
                          InboundDetail ON Inbounds.OrderId = InboundDetail.OrderId</CommandText>
@@ -808,10 +808,10 @@ FROM            Supplier INNER JOIN
               <Mapping SourceColumn="ProductDescription" DataSetColumn="ProductDescription" />
               <Mapping SourceColumn="ProductPrice" DataSetColumn="ProductPrice" />
               <Mapping SourceColumn="ProductQuantity" DataSetColumn="ProductQuantity" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
-              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
               <Mapping SourceColumn="OrderDate" DataSetColumn="OrderDate" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="_2dam06ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataById" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataById" UserSourceName="FillBy">
@@ -1102,54 +1102,54 @@ where Inbounds.OrderId = @OrderId</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InboundPDF" msprop:Generator_RowEvHandlerName="InboundPDFRowChangeEventHandler" msprop:Generator_RowDeletedName="InboundPDFRowDeleted" msprop:Generator_RowDeletingName="InboundPDFRowDeleting" msprop:Generator_RowEvArgName="InboundPDFRowChangeEvent" msprop:Generator_TablePropName="InboundPDF" msprop:Generator_RowChangedName="InboundPDFRowChanged" msprop:Generator_RowChangingName="InboundPDFRowChanging" msprop:Generator_TableClassName="InboundPDFDataTable" msprop:Generator_RowClassName="InboundPDFRow" msprop:Generator_TableVarName="tableInboundPDF" msprop:Generator_UserTableName="InboundPDF">
+        <xs:element name="InboundPDF" msprop:Generator_RowClassName="InboundPDFRow" msprop:Generator_RowEvHandlerName="InboundPDFRowChangeEventHandler" msprop:Generator_RowDeletedName="InboundPDFRowDeleted" msprop:Generator_RowDeletingName="InboundPDFRowDeleting" msprop:Generator_RowEvArgName="InboundPDFRowChangeEvent" msprop:Generator_TablePropName="InboundPDF" msprop:Generator_RowChangedName="InboundPDFRowChanged" msprop:Generator_UserTableName="InboundPDF" msprop:Generator_RowChangingName="InboundPDFRowChanging" msprop:Generator_TableClassName="InboundPDFDataTable" msprop:Generator_TableVarName="tableInboundPDF">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="SupplierId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="SupplierId" msprop:Generator_ColumnPropNameInTable="SupplierIdColumn" msprop:Generator_ColumnVarNameInTable="columnSupplierId" msprop:Generator_UserColumnName="SupplierId" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name">
+              <xs:element name="SupplierId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="SupplierId" msprop:Generator_ColumnPropNameInTable="SupplierIdColumn" msprop:Generator_ColumnPropNameInRow="SupplierId" msprop:Generator_ColumnVarNameInTable="columnSupplierId" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Telephone" msprop:Generator_ColumnPropNameInRow="Telephone" msprop:Generator_ColumnPropNameInTable="TelephoneColumn" msprop:Generator_ColumnVarNameInTable="columnTelephone" msprop:Generator_UserColumnName="Telephone">
+              <xs:element name="Telephone" msprop:Generator_UserColumnName="Telephone" msprop:Generator_ColumnPropNameInTable="TelephoneColumn" msprop:Generator_ColumnPropNameInRow="Telephone" msprop:Generator_ColumnVarNameInTable="columnTelephone">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="14" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_UserColumnName="Email">
+              <xs:element name="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="NIF" msprop:Generator_ColumnPropNameInRow="NIF" msprop:Generator_ColumnPropNameInTable="NIFColumn" msprop:Generator_ColumnVarNameInTable="columnNIF" msprop:Generator_UserColumnName="NIF">
+              <xs:element name="NIF" msprop:Generator_UserColumnName="NIF" msprop:Generator_ColumnPropNameInTable="NIFColumn" msprop:Generator_ColumnPropNameInRow="NIF" msprop:Generator_ColumnVarNameInTable="columnNIF">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="DetailId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="DetailId" msprop:Generator_ColumnPropNameInTable="DetailIdColumn" msprop:Generator_ColumnVarNameInTable="columnDetailId" msprop:Generator_UserColumnName="DetailId" type="xs:int" />
-              <xs:element name="OrderId" msprop:Generator_ColumnPropNameInRow="OrderId" msprop:Generator_ColumnPropNameInTable="OrderIdColumn" msprop:Generator_ColumnVarNameInTable="columnOrderId" msprop:Generator_UserColumnName="OrderId" type="xs:int" minOccurs="0" />
-              <xs:element name="ItemId" msprop:Generator_ColumnPropNameInRow="ItemId" msprop:Generator_ColumnPropNameInTable="ItemIdColumn" msprop:Generator_ColumnVarNameInTable="columnItemId" msprop:Generator_UserColumnName="ItemId" type="xs:int" minOccurs="0" />
-              <xs:element name="ProductDescription" msprop:Generator_ColumnPropNameInRow="ProductDescription" msprop:Generator_ColumnPropNameInTable="ProductDescriptionColumn" msprop:Generator_ColumnVarNameInTable="columnProductDescription" msprop:Generator_UserColumnName="ProductDescription" minOccurs="0">
+              <xs:element name="DetailId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="DetailId" msprop:Generator_ColumnPropNameInTable="DetailIdColumn" msprop:Generator_ColumnPropNameInRow="DetailId" msprop:Generator_ColumnVarNameInTable="columnDetailId" type="xs:int" />
+              <xs:element name="OrderId" msprop:Generator_UserColumnName="OrderId" msprop:Generator_ColumnPropNameInTable="OrderIdColumn" msprop:Generator_ColumnPropNameInRow="OrderId" msprop:Generator_ColumnVarNameInTable="columnOrderId" type="xs:int" />
+              <xs:element name="ItemId" msprop:Generator_UserColumnName="ItemId" msprop:Generator_ColumnPropNameInTable="ItemIdColumn" msprop:Generator_ColumnPropNameInRow="ItemId" msprop:Generator_ColumnVarNameInTable="columnItemId" type="xs:int" minOccurs="0" />
+              <xs:element name="ProductDescription" msprop:Generator_UserColumnName="ProductDescription" msprop:Generator_ColumnPropNameInTable="ProductDescriptionColumn" msprop:Generator_ColumnPropNameInRow="ProductDescription" msprop:Generator_ColumnVarNameInTable="columnProductDescription" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ProductPrice" msprop:Generator_ColumnPropNameInRow="ProductPrice" msprop:Generator_ColumnPropNameInTable="ProductPriceColumn" msprop:Generator_ColumnVarNameInTable="columnProductPrice" msprop:Generator_UserColumnName="ProductPrice" type="xs:decimal" minOccurs="0" />
-              <xs:element name="ProductQuantity" msprop:Generator_ColumnPropNameInRow="ProductQuantity" msprop:Generator_ColumnPropNameInTable="ProductQuantityColumn" msprop:Generator_ColumnVarNameInTable="columnProductQuantity" msprop:Generator_UserColumnName="ProductQuantity" type="xs:int" minOccurs="0" />
-              <xs:element name="Expr1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_UserColumnName="Expr1" type="xs:int" />
-              <xs:element name="Expr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_UserColumnName="Expr2" type="xs:int" />
-              <xs:element name="OrderDate" msprop:Generator_ColumnPropNameInRow="OrderDate" msprop:Generator_ColumnPropNameInTable="OrderDateColumn" msprop:Generator_ColumnVarNameInTable="columnOrderDate" msprop:Generator_UserColumnName="OrderDate" type="xs:dateTime" />
-              <xs:element name="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_UserColumnName="Total" type="xs:decimal" />
+              <xs:element name="ProductPrice" msprop:Generator_UserColumnName="ProductPrice" msprop:Generator_ColumnPropNameInTable="ProductPriceColumn" msprop:Generator_ColumnPropNameInRow="ProductPrice" msprop:Generator_ColumnVarNameInTable="columnProductPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ProductQuantity" msprop:Generator_UserColumnName="ProductQuantity" msprop:Generator_ColumnPropNameInTable="ProductQuantityColumn" msprop:Generator_ColumnPropNameInRow="ProductQuantity" msprop:Generator_ColumnVarNameInTable="columnProductQuantity" type="xs:int" minOccurs="0" />
+              <xs:element name="OrderDate" msprop:Generator_UserColumnName="OrderDate" msprop:Generator_ColumnPropNameInTable="OrderDateColumn" msprop:Generator_ColumnPropNameInRow="OrderDate" msprop:Generator_ColumnVarNameInTable="columnOrderDate" type="xs:dateTime" />
+              <xs:element name="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" type="xs:decimal" />
+              <xs:element name="Expr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_UserColumnName="Expr1" type="xs:int" />
+              <xs:element name="Expr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_UserColumnName="Expr2" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1196,16 +1196,16 @@ where Inbounds.OrderId = @OrderId</CommandText>
     <xs:unique name="InboundPDF_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:InboundPDF" />
       <xs:field xpath="mstns:SupplierId" />
+      <xs:field xpath="mstns:OrderId" />
       <xs:field xpath="mstns:DetailId" />
-      <xs:field xpath="mstns:Expr1" />
     </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_detalle_ToOutbound" msdata:parent="OutboundOrders" msdata:child="OutboundDetail" msdata:parentkey="OrderId" msdata:childkey="OrderId" msprop:Generator_UserParentTable="OutboundOrders" msprop:Generator_UserChildTable="OutboundDetail" msprop:Generator_RelationVarName="relationFK_detalle_ToOutbound" msprop:Generator_ChildPropName="GetOutboundDetailRows" msprop:Generator_ParentPropName="OutboundOrdersRow" msprop:Generator_UserRelationName="FK_detalle_ToOutbound" />
-      <msdata:Relationship name="FK_OutboundOrders_Clients" msdata:parent="Clients" msdata:child="OutboundOrders" msdata:parentkey="ClientId" msdata:childkey="ClientId" msprop:Generator_UserParentTable="Clients" msprop:Generator_UserChildTable="OutboundOrders" msprop:Generator_RelationVarName="relationFK_OutboundOrders_Clients" msprop:Generator_ChildPropName="GetOutboundOrdersRows" msprop:Generator_UserRelationName="FK_OutboundOrders_Clients" msprop:Generator_ParentPropName="ClientsRow" />
-      <msdata:Relationship name="FK_detalle_ToInbound" msdata:parent="Inbounds" msdata:child="InboundDetail" msdata:parentkey="OrderId" msdata:childkey="OrderId" msprop:Generator_UserParentTable="Inbounds" msprop:Generator_UserChildTable="InboundDetail" msprop:Generator_RelationVarName="relationFK_detalle_ToInbound" msprop:Generator_ChildPropName="GetInboundDetailRows" msprop:Generator_UserRelationName="FK_detalle_ToInbound" msprop:Generator_ParentPropName="InboundsRow" />
-      <msdata:Relationship name="FK_Inbounds_Supplier" msdata:parent="Supplier" msdata:child="Inbounds" msdata:parentkey="SupplierId" msdata:childkey="SupplierId" msprop:Generator_UserParentTable="Supplier" msprop:Generator_UserChildTable="Inbounds" msprop:Generator_RelationVarName="relationFK_Inbounds_Supplier" msprop:Generator_ChildPropName="GetInboundsRows" msprop:Generator_ParentPropName="SupplierRow" msprop:Generator_UserRelationName="FK_Inbounds_Supplier" />
+      <msdata:Relationship name="FK_detalle_ToOutbound" msdata:parent="OutboundOrders" msdata:child="OutboundDetail" msdata:parentkey="OrderId" msdata:childkey="OrderId" msprop:Generator_UserParentTable="OutboundOrders" msprop:Generator_UserChildTable="OutboundDetail" msprop:Generator_RelationVarName="relationFK_detalle_ToOutbound" msprop:Generator_ChildPropName="GetOutboundDetailRows" msprop:Generator_UserRelationName="FK_detalle_ToOutbound" msprop:Generator_ParentPropName="OutboundOrdersRow" />
+      <msdata:Relationship name="FK_OutboundOrders_Clients" msdata:parent="Clients" msdata:child="OutboundOrders" msdata:parentkey="ClientId" msdata:childkey="ClientId" msprop:Generator_UserParentTable="Clients" msprop:Generator_UserChildTable="OutboundOrders" msprop:Generator_RelationVarName="relationFK_OutboundOrders_Clients" msprop:Generator_ChildPropName="GetOutboundOrdersRows" msprop:Generator_ParentPropName="ClientsRow" msprop:Generator_UserRelationName="FK_OutboundOrders_Clients" />
+      <msdata:Relationship name="FK_detalle_ToInbound" msdata:parent="Inbounds" msdata:child="InboundDetail" msdata:parentkey="OrderId" msdata:childkey="OrderId" msprop:Generator_UserParentTable="Inbounds" msprop:Generator_UserChildTable="InboundDetail" msprop:Generator_RelationVarName="relationFK_detalle_ToInbound" msprop:Generator_ChildPropName="GetInboundDetailRows" msprop:Generator_ParentPropName="InboundsRow" msprop:Generator_UserRelationName="FK_detalle_ToInbound" />
+      <msdata:Relationship name="FK_Inbounds_Supplier" msdata:parent="Supplier" msdata:child="Inbounds" msdata:parentkey="SupplierId" msdata:childkey="SupplierId" msprop:Generator_UserParentTable="Supplier" msprop:Generator_UserChildTable="Inbounds" msprop:Generator_RelationVarName="relationFK_Inbounds_Supplier" msprop:Generator_ChildPropName="GetInboundsRows" msprop:Generator_UserRelationName="FK_Inbounds_Supplier" msprop:Generator_ParentPropName="SupplierRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

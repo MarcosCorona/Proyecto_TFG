@@ -3783,13 +3783,13 @@ namespace Proyecto_TFG.DataSet {
             
             private global::System.Data.DataColumn columnProductQuantity;
             
-            private global::System.Data.DataColumn columnExpr1;
-            
-            private global::System.Data.DataColumn columnExpr2;
-            
             private global::System.Data.DataColumn columnOrderDate;
             
             private global::System.Data.DataColumn columnTotal;
+            
+            private global::System.Data.DataColumn columnExpr1;
+            
+            private global::System.Data.DataColumn columnExpr2;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -3914,22 +3914,6 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Expr1Column {
-                get {
-                    return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Expr2Column {
-                get {
-                    return this.columnExpr2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn OrderDateColumn {
                 get {
                     return this.columnOrderDate;
@@ -3941,6 +3925,22 @@ namespace Proyecto_TFG.DataSet {
             public global::System.Data.DataColumn TotalColumn {
                 get {
                     return this.columnTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Expr2Column {
+                get {
+                    return this.columnExpr2;
                 }
             }
             
@@ -3981,7 +3981,7 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InboundPDFRow AddInboundPDFRow(string Name, string Telephone, string Email, string NIF, int OrderId, int ItemId, string ProductDescription, decimal ProductPrice, int ProductQuantity, int Expr2, System.DateTime OrderDate, decimal Total) {
+            public InboundPDFRow AddInboundPDFRow(string Name, string Telephone, string Email, string NIF, int OrderId, int ItemId, string ProductDescription, decimal ProductPrice, int ProductQuantity, System.DateTime OrderDate, decimal Total, int Expr1, int Expr2) {
                 InboundPDFRow rowInboundPDFRow = ((InboundPDFRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3995,10 +3995,10 @@ namespace Proyecto_TFG.DataSet {
                         ProductDescription,
                         ProductPrice,
                         ProductQuantity,
-                        null,
-                        Expr2,
                         OrderDate,
-                        Total};
+                        Total,
+                        Expr1,
+                        Expr2};
                 rowInboundPDFRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInboundPDFRow);
                 return rowInboundPDFRow;
@@ -4006,11 +4006,11 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InboundPDFRow FindBySupplierIdDetailIdExpr1(int SupplierId, int DetailId, int Expr1) {
+            public InboundPDFRow FindBySupplierIdOrderIdDetailId(int SupplierId, int OrderId, int DetailId) {
                 return ((InboundPDFRow)(this.Rows.Find(new object[] {
                             SupplierId,
-                            DetailId,
-                            Expr1})));
+                            OrderId,
+                            DetailId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4041,10 +4041,10 @@ namespace Proyecto_TFG.DataSet {
                 this.columnProductDescription = base.Columns["ProductDescription"];
                 this.columnProductPrice = base.Columns["ProductPrice"];
                 this.columnProductQuantity = base.Columns["ProductQuantity"];
-                this.columnExpr1 = base.Columns["Expr1"];
-                this.columnExpr2 = base.Columns["Expr2"];
                 this.columnOrderDate = base.Columns["OrderDate"];
                 this.columnTotal = base.Columns["Total"];
+                this.columnExpr1 = base.Columns["Expr1"];
+                this.columnExpr2 = base.Columns["Expr2"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4072,18 +4072,18 @@ namespace Proyecto_TFG.DataSet {
                 base.Columns.Add(this.columnProductPrice);
                 this.columnProductQuantity = new global::System.Data.DataColumn("ProductQuantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProductQuantity);
-                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr1);
-                this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr2);
                 this.columnOrderDate = new global::System.Data.DataColumn("OrderDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderDate);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
+                this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr2);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSupplierId,
-                                this.columnDetailId,
-                                this.columnExpr1}, true));
+                                this.columnOrderId,
+                                this.columnDetailId}, true));
                 this.columnSupplierId.AutoIncrement = true;
                 this.columnSupplierId.AutoIncrementSeed = -1;
                 this.columnSupplierId.AutoIncrementStep = -1;
@@ -4102,15 +4102,11 @@ namespace Proyecto_TFG.DataSet {
                 this.columnDetailId.AutoIncrementStep = -1;
                 this.columnDetailId.AllowDBNull = false;
                 this.columnDetailId.ReadOnly = true;
+                this.columnOrderId.AllowDBNull = false;
                 this.columnProductDescription.MaxLength = 100;
-                this.columnExpr1.AutoIncrement = true;
-                this.columnExpr1.AutoIncrementSeed = -1;
-                this.columnExpr1.AutoIncrementStep = -1;
-                this.columnExpr1.AllowDBNull = false;
-                this.columnExpr1.ReadOnly = true;
-                this.columnExpr2.AllowDBNull = false;
                 this.columnOrderDate.AllowDBNull = false;
                 this.columnTotal.AllowDBNull = false;
+                this.columnExpr1.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5415,12 +5411,7 @@ namespace Proyecto_TFG.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int OrderId {
                 get {
-                    try {
-                        return ((int)(this[this.tableInboundPDF.OrderIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'OrderId\' de la tabla \'InboundPDF\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableInboundPDF.OrderIdColumn]));
                 }
                 set {
                     this[this.tableInboundPDF.OrderIdColumn] = value;
@@ -5493,28 +5484,6 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Expr1 {
-                get {
-                    return ((int)(this[this.tableInboundPDF.Expr1Column]));
-                }
-                set {
-                    this[this.tableInboundPDF.Expr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Expr2 {
-                get {
-                    return ((int)(this[this.tableInboundPDF.Expr2Column]));
-                }
-                set {
-                    this[this.tableInboundPDF.Expr2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime OrderDate {
                 get {
                     return ((global::System.DateTime)(this[this.tableInboundPDF.OrderDateColumn]));
@@ -5537,14 +5506,29 @@ namespace Proyecto_TFG.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsOrderIdNull() {
-                return this.IsNull(this.tableInboundPDF.OrderIdColumn);
+            public int Expr1 {
+                get {
+                    return ((int)(this[this.tableInboundPDF.Expr1Column]));
+                }
+                set {
+                    this[this.tableInboundPDF.Expr1Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetOrderIdNull() {
-                this[this.tableInboundPDF.OrderIdColumn] = global::System.Convert.DBNull;
+            public int Expr2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableInboundPDF.Expr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Expr2\' de la tabla \'InboundPDF\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInboundPDF.Expr2Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5593,6 +5577,18 @@ namespace Proyecto_TFG.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetProductQuantityNull() {
                 this[this.tableInboundPDF.ProductQuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsExpr2Null() {
+                return this.IsNull(this.tableInboundPDF.Expr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetExpr2Null() {
+                this[this.tableInboundPDF.Expr2Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -10115,10 +10111,10 @@ WHERE OutboundOrders.OrderId = @OrderId";
             tableMapping.ColumnMappings.Add("ProductDescription", "ProductDescription");
             tableMapping.ColumnMappings.Add("ProductPrice", "ProductPrice");
             tableMapping.ColumnMappings.Add("ProductQuantity", "ProductQuantity");
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
-            tableMapping.ColumnMappings.Add("Expr2", "Expr2");
             tableMapping.ColumnMappings.Add("OrderDate", "OrderDate");
             tableMapping.ColumnMappings.Add("Total", "Total");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("Expr2", "Expr2");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10135,8 +10131,8 @@ WHERE OutboundOrders.OrderId = @OrderId";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Supplier.SupplierId ,Supplier.Name, Supplier.Telephone, Supplier.Email, Supplier.NIF, InboundDetail.DetailId, InboundDetail.OrderId, InboundDetail.ItemId, InboundDetail.ProductDescription, InboundDetail.ProductPrice, 
-                        InboundDetail.ProductQuantity, Inbounds.OrderId AS Expr1,Inbounds.SupplierId AS Expr2, Inbounds.OrderDate, Inbounds.Total
+            this._commandCollection[0].CommandText = @"SELECT        Supplier.SupplierId, Supplier.Name, Supplier.NIF, Supplier.Email, Supplier.Telephone, Inbounds.OrderId, Inbounds.SupplierId AS Expr1, Inbounds.OrderDate, Inbounds.Total, InboundDetail.DetailId, 
+                         InboundDetail.OrderId AS Expr2, InboundDetail.ItemId, InboundDetail.ProductDescription, InboundDetail.ProductPrice, InboundDetail.ProductQuantity
 FROM            Supplier INNER JOIN
                          Inbounds ON Supplier.SupplierId = Inbounds.SupplierId INNER JOIN
                          InboundDetail ON Inbounds.OrderId = InboundDetail.OrderId";

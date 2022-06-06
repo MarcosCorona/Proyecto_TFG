@@ -8,3 +8,12 @@
 }
 
 
+
+namespace Proyecto_TFG.DataSet.DataSet1TableAdapters
+{
+
+
+    public partial class InboundPDFTableAdapter
+    {
+    }
+}

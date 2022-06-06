@@ -26,42 +26,79 @@ namespace Proyecto_TFG.Commands.Clients
             ClientModel client = clientsViewModel.CurrentClient;
             if (client != null)
             {
-                foreach (ClientModel c in clientsViewModel.ClientsList)
+                if(clientsViewModel.ClientsList != null)
                 {
-                    if (c.ClientId.Equals(client.ClientId) || client.NIF is null)
+                    foreach (ClientModel c in clientsViewModel.ClientsList)
+                    {
+                        if (c.ClientId.Equals(client.ClientId) || client.NIF is null)
+                        {
+                            id();
+                            break;
+                        }
+                        else if (client.Name is null || client.Name.Equals(""))
+                        {
+                            name();
+                            break;
+                        }
+                        else if (client.Telephone is null || client.Telephone.Equals(""))
+                        {
+                            telephone();
+                            break;
+                        }
+                        else if (client.Email is null || client.Email.Equals(""))
+                        {
+                            email();
+                            break;
+                        }
+                        else if (client.NIF is null || client.NIF.Equals("") || client.NIF.Length > 10)
+                        {
+                            nif();
+                            break;
+                        }
+                        else
+                        {
+
+                            DataSetHandler.insertClient(client.ClientId, client.Name, client.Telephone, client.Email, client.NIF);
+                            clientsViewModel.ClientsList = DataSetHandler.GetClients();
+                            clientsViewModel.CurrentClient = new ClientModel();
+                            created(client.Name);
+                            break;
+                        }
+                    }
+
+                }
+                else
+                {
+                    if (client.NIF is null)
                     {
                         id();
-                        break;
-                    }else if(client.Name is null || client.Name.Equals(""))
+                    }
+                    else if (client.Name is null || client.Name.Equals(""))
                     {
                         name();
-                        break;
                     }
                     else if (client.Telephone is null || client.Telephone.Equals(""))
                     {
                         telephone();
-                        break;
                     }
                     else if (client.Email is null || client.Email.Equals(""))
                     {
                         email();
-                        break;
                     }
                     else if (client.NIF is null || client.NIF.Equals("") || client.NIF.Length > 10)
                     {
                         nif();
-                        break;
                     }
                     else
                     {
-                      
+
                         DataSetHandler.insertClient(client.ClientId, client.Name, client.Telephone, client.Email, client.NIF);
                         clientsViewModel.ClientsList = DataSetHandler.GetClients();
                         clientsViewModel.CurrentClient = new ClientModel();
                         created(client.Name);
-                        break;
                     }
                 }
+               
             }
             else
             {
@@ -96,7 +133,7 @@ namespace Proyecto_TFG.Commands.Clients
         }
         private void gerror()
         {
-            bool? Result = new MessageBoxCustom("Error creating the client, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+            bool? Result = new MessageBoxCustom("Error creating the client, please try again.", MessageType.Success, MessageButtons.Ok).ShowDialog();
         }
 
         public ClientsViewModel clientsViewModel { get; set; }

@@ -264,7 +264,7 @@ namespace Proyecto_TFG.Handlers
                 {
                     DataRow lastItem = inboundAdapter.GetData().Last();
                     int idLastInbound = (int)lastItem["OrderId"];
-                    detailAdapter.Insert(idLastInbound, itemId, description, (Decimal)price, quantity);
+                    inboundDetailAdapter.Insert(idLastInbound, itemId, description, (Decimal)price, quantity);
                     return true;
                 }
             }

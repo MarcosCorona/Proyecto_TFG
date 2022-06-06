@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="5">
 
-            <TextBlock Text="Clients Management" FontWeight="Bold" FontStyle="Italic" FontSize="35"  
+            <TextBlock Text="Clients Management" FontWeight="Bold"  FontSize="35"  
                        Foreground="White" HorizontalAlignment="Center" Height="70" VerticalAlignment="Top" FontFamily="Segoe Print"/>
             <ListView x:Name="ClientsList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  
                   ItemsSource="{Binding ClientsList}" SelectedItem="{Binding Client}" 
