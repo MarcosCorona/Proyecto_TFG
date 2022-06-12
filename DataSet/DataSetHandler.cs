@@ -53,6 +53,7 @@ namespace Proyecto_TFG.Handlers
                 person.email = (string)personRow["Email"];
                 person.birthday = (DateTime)personRow["Birthday"];
                 person.city = (string)personRow["City"];
+                person.username = (string)personRow["Username"];
 
 
                 personsList.Add(person);
@@ -168,7 +169,7 @@ namespace Proyecto_TFG.Handlers
                 return false;
             }
         }
-        internal static bool insertProduct(int itemId, string Name, int Quantity, double price, string description)
+        internal static bool insertProduct(int itemId, string Name, int Quantity, double price, string description, string location)
         {
             DataTable productTableAdapter = productAdapter.GetData();
             if(productTableAdapter.Rows.Count < 0)
@@ -177,7 +178,7 @@ namespace Proyecto_TFG.Handlers
             }
             else
             {
-                productAdapter.Insert(Name, Quantity, (decimal)price, description);
+                productAdapter.Insert(Name, Quantity, (decimal)price, description, location);
                 return true;
             }
             
@@ -197,7 +198,7 @@ namespace Proyecto_TFG.Handlers
             }
         }
 
-        internal static bool insertUser(string dni, string name, string lastname, string email, string password, DateTime birthday, string job, string address, string city)
+        internal static bool insertUser(string dni, string name, string lastname, string email, string password, DateTime birthday, string job, string address, string city, string username)
         {
 
             DataTable userTableAdapter = personAdapter.GetData();
@@ -207,11 +208,7 @@ namespace Proyecto_TFG.Handlers
             }
             else
             {
-                if(dni is null)
-                {
-                    MessageBox.Show("Dni is empty.");
-                }
-                personAdapter.Insert(dni,name,lastname,email,password,birthday,job,address,city);
+                personAdapter.Insert(dni,name,lastname,email,password,birthday,job,address,city,username);
                 return true;
             }
         }
@@ -319,6 +316,7 @@ namespace Proyecto_TFG.Handlers
                 product.Quantity = (int)productRow["Quantity"];
                 product.Price = (double)productRow["Price"];
                 product.Description = (string)productRow["Description"];
+                product.location = (string)productRow["Location"];
                 productsList.Add(product);
             }
             return productsList;
@@ -340,7 +338,7 @@ namespace Proyecto_TFG.Handlers
         }
         internal static void updateqty(int resultQty, int itemId)
         {
-            productAdapter.UpdateQuantity(resultQty,itemId);
+            productAdapter.updateQuantity(resultQty,itemId);
         }
 
         internal static void removeOutbound(int orderId)
@@ -377,11 +375,11 @@ namespace Proyecto_TFG.Handlers
 
         internal static void deleteUser(string dni)
         {
-            personAdapter.DeleteUser(dni);
+            personAdapter.deleteUser(dni);
         }
-        internal static void modifyProduct(int itemId,string name, int quantity, string description, double price)
+        internal static void modifyProduct(int itemId,string name, int quantity, string description, double price, string location)
         {
-            productAdapter.updateProduct(name, quantity, (decimal)price, description, itemId);
+            productAdapter.updateProduct(name, quantity, (decimal)price, description, location, itemId );
         }
 
         internal static void modifyClient(int clientId, string name, string telephone, string email, string nIF)
@@ -393,10 +391,10 @@ namespace Proyecto_TFG.Handlers
         {
             supplierAdapter.UpdateSupplier(name, telephone, email, nIF, supplierId);
         }
-        internal static void modifyUser(string dni, string name, string lastname, string email, string password, DateTime birthday, string job, string address, string city)
+        internal static void modifyUser(string dni, string name, string lastname, string email, string password, DateTime birthday, string job, string address, string city,string username)
         {
             string date = birthday.ToString();
-            personAdapter.UpdateUser(dni, name, lastname, email, password, date, job, address, city, dni);
+            personAdapter.updateUser(dni, name, lastname, email, password, date, job, address, city, username, dni);
         }
 
         public static DataTable getOutboundDataByOrderId(int orderid)

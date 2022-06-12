@@ -60,7 +60,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Suppliers" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="20" Foreground="White" FontWeight="Bold" FontFamily="Segoe Print"/>
-                <TextBlock x:Name="txtid" Text="Client id:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="1" Visibility="Collapsed" />
+                <TextBlock x:Name="txtid" Text="Client id:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="1" Visibility="Collapsed" Margin="60,0,0,0" />
                 <TextBlock Text="Name:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="2" HorizontalAlignment="Left" Margin="60,0,0,0"/>
                 <TextBlock Text="NIF:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="3" HorizontalAlignment="Left" Margin="60,0,0,0" />
                 <TextBlock Text="Email:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="4" HorizontalAlignment="Left" Margin="60,0,0,0" />

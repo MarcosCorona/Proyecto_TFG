@@ -38,8 +38,9 @@
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"/>
                         <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding lastname}"/>
                         <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}"/>
-                        <GridViewColumn Header="Address" Width="200" DisplayMemberBinding="{Binding address}"/>
-                        <GridViewColumn Header="Job" Width="200" DisplayMemberBinding="{Binding job}"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding address}"/>
+                        <GridViewColumn Header="Job"  DisplayMemberBinding="{Binding job}"/>
+                        <GridViewColumn Header="Job"  DisplayMemberBinding="{Binding username}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -69,6 +70,7 @@
                 <TextBlock Text="Name:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="2" HorizontalAlignment="Left" Margin="60,0,0,0" />
                 <TextBlock Text="Last Name:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="3" HorizontalAlignment="Left" Margin="60,0,0,0" />
                 <TextBlock Text="Email:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="4" HorizontalAlignment="Left" Margin="60,0,0,0"/>
+                <TextBlock Text="Username:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="5" HorizontalAlignment="Left" Margin="60,0,0,0"/>
 
                 <TextBlock Text="Password:" TextAlignment="Left" Grid.Column="2" Foreground="White" Grid.Row="1" HorizontalAlignment="Left" Margin="60,0,0,0"/>
                 <TextBlock Text="Birthday:" TextAlignment="Left" Grid.Column="2" Foreground="White" Grid.Row="2" HorizontalAlignment="Left" Margin="60,0,0,0"/>
@@ -80,6 +82,7 @@
                 <TextBox Foreground="White" Grid.Row="2" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentUser.name}" />
                 <TextBox Foreground="White" Grid.Row="3" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentUser.lastname}"/>
                 <TextBox Foreground="White" Grid.Row="4" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentUser.email}"/>
+                <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentUser.username}"/>
 
                 <TextBox Foreground="White" Grid.Row="1" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.password}"/>
                 <DatePicker Foreground="White" Grid.Row="2" Grid.Column="4" Text="{Binding CurrentUser.birthday}"/>

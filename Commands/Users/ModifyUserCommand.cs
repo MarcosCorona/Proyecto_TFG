@@ -30,7 +30,7 @@ namespace Proyecto_TFG.Commands.Users
                 {
                     if (u.dni.Equals(user.dni))
                     {
-                        DataSetHandler.modifyUser(user.dni, user.name, user.lastname, user.email, user.password,user.birthday,user.job,user.address,user.city);
+                        DataSetHandler.modifyUser(user.dni, user.name, user.lastname, user.email, user.password,user.birthday,user.job,user.address,user.city,user.username);
                         modified(user.name);
                         usersViewModel.UserList = DataSetHandler.GetPerson();
                         usersViewModel.CurrentUser = new PersonModel();

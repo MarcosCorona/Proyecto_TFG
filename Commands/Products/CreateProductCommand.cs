@@ -55,7 +55,7 @@ namespace Proyecto_TFG.Commands.Products
                     }
                     else
                     {
-                        DataSetHandler.insertProduct(product.ItemId, product.Name, product.Quantity, product.Price, product.Description);
+                        DataSetHandler.insertProduct(product.ItemId, product.Name, product.Quantity, product.Price, product.Description,product.location);
                         inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
                         inventoryViewModel.CurrentProduct = new ProductModel();
                         created(product.Name);

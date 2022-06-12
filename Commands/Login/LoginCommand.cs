@@ -47,7 +47,7 @@ namespace Proyecto_TFG.Commands
                 bool passok = false;
                 foreach (PersonModel p in personsList)
                 {
-                    if (p.name == loginViewModel.username && p.password == passw)
+                    if (p.username == loginViewModel.username && p.password == passw)
                     {
                         BTLOGT(p.name);
                         loginViewModel.UpdateViewCommand.Execute("home");

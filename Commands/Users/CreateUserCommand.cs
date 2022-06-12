@@ -73,10 +73,15 @@ namespace Proyecto_TFG.Commands.Users
                         city();
                         break;
                     }
+                    else if (user.username is null || user.username.Equals(""))
+                    {
+                        city();
+                        break;
+                    }
                     else
                     {
 
-                        DataSetHandler.insertUser(user.dni, user.name, user.lastname, user.email, user.password,user.birthday,user.job,user.address,user.city);
+                        DataSetHandler.insertUser(user.dni, user.name, user.lastname, user.email, user.password,user.birthday,user.job,user.address,user.city,user.username);
                         usersViewModel.UserList = DataSetHandler.GetPerson();
                         usersViewModel.CurrentUser = new PersonModel();
                         created(user.name);
