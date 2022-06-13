@@ -49,7 +49,7 @@ namespace Proyecto_TFG.Commands.Users
                         password();
                         break;
                     }
-                    else if (user.birthday < DateTime.Today || user.birthday.Equals(""))
+                    else if (user.birthday > DateTime.Today || user.birthday.Equals(""))
                     {
                         birthday();
                         break;
