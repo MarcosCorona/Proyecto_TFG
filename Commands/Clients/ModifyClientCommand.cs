@@ -23,7 +23,10 @@ namespace Proyecto_TFG.Commands.Clients
 
         public void Execute(object parameter)
         {
+            //metodo para modificar clientes, lo hara en caso de que exista un cliente con el mismo id del cliente a modificar.
+
             ClientModel client = clientsViewModel.CurrentClient;
+
             if (client != null && client.ClientId >0 && client.Name != "" && client.Telephone != "" && client.Email != "" && client.NIF != "")
             {
                 foreach (ClientModel c in clientsViewModel.ClientsList)
@@ -43,7 +46,7 @@ namespace Proyecto_TFG.Commands.Clients
                 error();
             }
         }
-
+        //messagebox para los casos de si se ha modificado o no.
         private void modified(string name)
         {
             bool? Result = new MessageBoxCustom("The client " + name + " has been modified.", MessageType.Success, MessageButtons.Ok).ShowDialog();

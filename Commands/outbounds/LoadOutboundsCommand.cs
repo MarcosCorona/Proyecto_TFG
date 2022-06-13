@@ -20,6 +20,7 @@ namespace Proyecto_TFG.Commands.outbounds
 
         public void Execute(object parameter)
         {
+            //metodo para cargar la lista de albaranes
             outboundViewModel.OutboundList = DataSetHandler.GetOutbounds();
         }
 

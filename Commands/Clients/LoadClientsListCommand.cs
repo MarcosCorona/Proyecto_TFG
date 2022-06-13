@@ -21,6 +21,8 @@ namespace Proyecto_TFG.Commands.Clients
 
         public void Execute(object parameter)
         {
+            //comando para cargar la lista de clientes tanto en la vista de albaranes como en la de clientes..
+            //vista albaranes
             if (parameter.ToString().Equals("outbound")){
 
                 outboundViewModel.ClientsList = DataSetHandler.GetClients();
@@ -29,6 +31,7 @@ namespace Proyecto_TFG.Commands.Clients
                     MessageBox.Show("There are no clients to show.");
                 }
             }
+            //vista clientes
             else if (parameter.ToString().Equals("clients"))
             {
                 clientsViewModel.ClientsList = DataSetHandler.GetClients();

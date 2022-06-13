@@ -24,18 +24,21 @@ namespace Proyecto_TFG.Commands
 
         public void Execute(object parameter)
         {
+            //metodo para crear un albaran de entrada.
+            //atributos
             ClientModel c = outboundViewModel.Client;
 
             double total = 0;
+            //por cada producto calculamos el total del albaran
             foreach (ProductModel p in outboundViewModel.CharList)
             {
                 total = p.Total + total;
             }
 
-            
 
+            //establecemos la fecha de creacion
             DateTime date = DateTime.Today;
-
+            //se validan las casillas de proveedor y total
             if (c is null)
             {
                 ssupplier();
@@ -45,16 +48,20 @@ namespace Proyecto_TFG.Commands
                 charlist();
             }
             else
-            {
+            {   
+                //si todo es correcto se inserta el albaran
                 bool okInsertar = DataSetHandler.insertOutbound(c.ClientId, date, total);
                 if (okInsertar)
                 {
-                   foreach (ProductModel p in outboundViewModel.CharList)
+                    //por cada producto que existe en la lista del carrito se guardará un detalle asociado a ese albarán.
+                    foreach (ProductModel p in outboundViewModel.CharList)
                    {
                             DataSetHandler.insertDetail(p.ItemId, p.Description, p.Quantity, p.Price);
                    }
+                    //dejamos la lista vacía
                     outboundViewModel.CharList = new ObservableCollection<ProductModel>();
                     ocreated();
+                    //cargamos los albaranes
                     outboundViewModel.OutboundList = DataSetHandler.GetOutbounds();
                 }
                 else

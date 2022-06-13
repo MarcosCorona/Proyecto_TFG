@@ -22,13 +22,15 @@ namespace Proyecto_TFG.Commands.Inbounds
 
         public void Execute(object parameter)
         {
+            //metodo para generar pdf's
             InboundModel inbound = (InboundModel)parameter;
             if (inbound != null)
             {
                 if (inbound.OrderId > 0)
                 {
+                    //enviamos el id del inbound seleccionado para generar el pdf.
                     inboundViewModel.updateViewCommandv2.pDFViewModel.generateInbPDF(inbound.OrderId);
-
+                    //cambiamos de vista a la que está diseñada para ver los pdf.
                     inboundViewModel.updateViewCommandv2.Execute("pdfInbound");
                 }
             }

@@ -24,7 +24,27 @@ namespace Proyecto_TFG.Commands.Products
         public void Execute(object parameter)
         {
             ProductModel product = inventoryViewModel.CurrentProduct;
-            if (product != null)
+            if (product.Name is null || product.Name.Equals(""))
+            {
+                name();
+            }
+            else if (product.Quantity < 0 || product.Quantity.Equals(""))
+            {
+                quantity();
+            }
+            else if (product.Price < 0 || product.Price.Equals(""))
+            {
+                price();
+            }
+            else if (product.Description is null || product.Description.Equals(""))
+            {
+                description();
+            }
+            else if (product.location is null || product.location.Equals(""))
+            {
+                glocation();
+            }
+            else if(product != null)
             {
                 foreach (ProductModel p in inventoryViewModel.ProductsList)
                 {
@@ -44,9 +64,39 @@ namespace Proyecto_TFG.Commands.Products
             }
         }
 
+        private void name()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the product name", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void quantity()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the product quantity", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void price()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the product price", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void description()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the product description", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+
+        private void created(string name)
+        {
+            bool? Result = new MessageBoxCustom("The product " + name + " has been created.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+        }
+        private void gerror()
+        {
+            bool? Result = new MessageBoxCustom("Error creating the product, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void glocation()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the product location", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+
         private void modified(string name)
         {
-            bool? Result = new MessageBoxCustom("The product " + name + " has been modified.", MessageType.Success, MessageButtons.Ok).ShowDialog();
+            bool? Result = new MessageBoxCustom("The product " + name + " \n has been modified.", MessageType.Success, MessageButtons.Ok).ShowDialog();
         }
         private void error()
         {

@@ -48,7 +48,7 @@ namespace Proyecto_TFG.Commands.Products
 
         private void deleted(string name)
         {
-            bool? Result = new MessageBoxCustom("The product " + name + " has been deleted", MessageType.Error, MessageButtons.Ok).ShowDialog();
+            bool? Result = new MessageBoxCustom("The product " + name + " has been deleted", MessageType.Success, MessageButtons.Ok).ShowDialog();
         }
 
         private void gerror()

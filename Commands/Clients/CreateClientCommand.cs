@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Proyecto_TFG.Commands.Clients
-{
+{   //este comando servirá para crear un cliente
     class CreateClientCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
@@ -26,6 +26,7 @@ namespace Proyecto_TFG.Commands.Clients
             ClientModel client = clientsViewModel.CurrentClient;
             if (client != null)
             {
+                //si la lista clientes no es nula procederá a validar cada campo 
                 if(clientsViewModel.ClientsList != null)
                 {
                     foreach (ClientModel c in clientsViewModel.ClientsList)
@@ -57,10 +58,13 @@ namespace Proyecto_TFG.Commands.Clients
                         }
                         else
                         {
-
+                            //si todos los campos son correctos se llama al metodo para crear cliente
                             DataSetHandler.insertClient(client.ClientId, client.Name, client.Telephone, client.Email, client.NIF);
+                            //devolvemos de nuevo la lista de los clientes
                             clientsViewModel.ClientsList = DataSetHandler.GetClients();
+                            //el cliente actual pasa a ser uno nuevo
                             clientsViewModel.CurrentClient = new ClientModel();
+                            //mensaje de cliente creado.
                             created(client.Name);
                             break;
                         }
@@ -69,6 +73,7 @@ namespace Proyecto_TFG.Commands.Clients
                 }
                 else
                 {
+                    //si la lista es nula creará el primer cliente 
                     if (client.NIF is null)
                     {
                         id();
@@ -91,7 +96,7 @@ namespace Proyecto_TFG.Commands.Clients
                     }
                     else
                     {
-
+                        //inserta el cliente
                         DataSetHandler.insertClient(client.ClientId, client.Name, client.Telephone, client.Email, client.NIF);
                         clientsViewModel.ClientsList = DataSetHandler.GetClients();
                         clientsViewModel.CurrentClient = new ClientModel();

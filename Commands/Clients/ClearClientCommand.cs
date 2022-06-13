@@ -13,7 +13,7 @@ namespace Proyecto_TFG.Commands.Clients
 {
     class ClearClientCommand : ICommand
     {
-      
+        //este comando servirá para cambiar el cliente actual a uno nuevo 
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)

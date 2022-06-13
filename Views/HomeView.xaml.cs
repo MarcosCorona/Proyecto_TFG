@@ -88,5 +88,49 @@ namespace Proyecto_TFG.Views
                 }
             }
         }
+        public void enableAll()
+        {
+            outboundsbt.IsEnabled = true;
+            inboundsbt.IsEnabled = true;
+            inventorybt.IsEnabled = true;
+            clientsbt.IsEnabled = true;
+            suppliersbt.IsEnabled = true;
+            employeesbt.IsEnabled = true;
+        }
+        private void outboundsbt_Click(object sender, RoutedEventArgs e)
+        {
+            enableAll();
+            outboundsbt.IsEnabled = false;
+        }
+
+        private void inboundsbt_Click(object sender, RoutedEventArgs e)
+        {
+            enableAll();
+            inboundsbt.IsEnabled = false;
+        }
+
+        private void inventorybt_Click(object sender, RoutedEventArgs e)
+        {
+            enableAll();
+            inventorybt.IsEnabled = false;
+        }
+
+        private void clientsbt_Click(object sender, RoutedEventArgs e)
+        {
+            enableAll();
+            clientsbt.IsEnabled = false;
+        }
+
+        private void suppliersbt_Click(object sender, RoutedEventArgs e)
+        {
+            enableAll();
+            suppliersbt.IsEnabled = false;
+        }
+
+        private void employeesbt_Click(object sender, RoutedEventArgs e)
+        {
+            enableAll();
+            employeesbt.IsEnabled = false;
+        }
     }
 }

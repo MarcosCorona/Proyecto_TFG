@@ -32,7 +32,9 @@ namespace Proyecto_TFG.Commands
                     mainViewModel.SelectedViewModel = new HomeViewModel(this);
                 }else if (viewName.Equals("logout"))
                 {
+                    
                     mainViewModel.SelectedViewModel = new LoginViewModel(this);
+
                 }
             }
         }
