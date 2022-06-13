@@ -29,7 +29,10 @@ Paso 4.1 Ejemplo de las ventanas inventario / usuarios / proveedores / clientes.
 
 Se debe tener en cuenta que cada tipo de trabajo nos permite lo siguiente:
 
-    -
+    -RRHH: Crear/Gestionar usuarios para su conexión.
+    -Administrative: Crear/Gestionar Entradas,salidas, clientes y proveedores.
+    -Stock: Crear/Gestionar el stock y los productos del almacén.
+    -Boss: Administrador. Puede hacer todo.
 
 Para cualquier problema contacte con marcoscoronadionisio@gmail.com único desarrollador de esta aplicación.
 
