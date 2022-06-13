@@ -73,7 +73,7 @@
                 <TextBox Foreground="White" Grid.Row="2" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Name}"  />
                 <TextBox Foreground="White" Grid.Row="3" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Quantity}" />
                 <TextBox Foreground="White" Grid.Row="4" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Price}"/>
-                <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Description}"/>
+                <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Description}" />
                 <TextBox Foreground="White" Grid.Row="6" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Location}"/>
 
             </Grid>
@@ -85,7 +85,7 @@
                 Command="{Binding createProductCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <Button x:Name="btedit" Width="150" Content="Modify/Delete" Background="#FF3A8CB7" 
+            <Button x:Name="btedit" Width="150" Content="Manage products" Background="#FF3A8CB7" 
                 Cursor="Hand" Margin="5" Click="editClick" />
 
             <Button x:Name="btdel" Width="100" Content="Delete" Background="#FF3A8CB7"

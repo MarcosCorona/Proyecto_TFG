@@ -28,29 +28,29 @@ namespace Proyecto_TFG.Commands.Products
             {
                 foreach (ProductModel p in inventoryViewModel.ProductsList)
                 {
-                    if (product.ItemId.Equals(product.ItemId) || product.ItemId.Equals(""))
-                    {
-                        id();
-                        break;
-                    }
-                    else if (p.Name is null || p.Name.Equals(""))
+             
+                    if (product.Name is null || product.Name.Equals(""))
                     {
                         name();
                         break;
                     }
-                    else if (p.Quantity < 0 || p.Quantity.Equals(""))
+                    else if (product.Quantity < 0 || product.Quantity.Equals(""))
                     {
                         quantity();
                         break;
                     }
-                    else if (p.Price < 0 || p.Price.Equals(""))
+                    else if (product.Price < 0 || product.Price.Equals(""))
                     {
                         price();
                         break;
                     }
-                    else if (p.Description is null || p.Description.Equals(""))
+                    else if (product.Description is null || product.Description.Equals(""))
                     {
                         description();
+                        break;
+                    }else if(product.location is null || product.location.Equals(""))
+                    {
+                        glocation();
                         break;
                     }
                     else
@@ -79,15 +79,15 @@ namespace Proyecto_TFG.Commands.Products
         }
         private void quantity()
         {
-            bool? Result = new MessageBoxCustom("Please, check the product telephone", MessageType.Error, MessageButtons.Ok).ShowDialog();
+            bool? Result = new MessageBoxCustom("Please, check the product quantity", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         private void price()
         {
-            bool? Result = new MessageBoxCustom("Please, check the product email", MessageType.Error, MessageButtons.Ok).ShowDialog();
+            bool? Result = new MessageBoxCustom("Please, check the product price", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         private void description()
         {
-            bool? Result = new MessageBoxCustom("Please, check the product nif", MessageType.Error, MessageButtons.Ok).ShowDialog();
+            bool? Result = new MessageBoxCustom("Please, check the product description", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
         private void created(string name)
@@ -97,6 +97,10 @@ namespace Proyecto_TFG.Commands.Products
         private void gerror()
         {
             bool? Result = new MessageBoxCustom("Error creating the product, please try again.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void glocation()
+        {
+          bool? Result = new MessageBoxCustom("Please, check the product location", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
         public InventoryViewModel inventoryViewModel { get; set; }
