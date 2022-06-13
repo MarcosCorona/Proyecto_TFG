@@ -15,7 +15,7 @@
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition/>
+            <RowDefinition Height="185"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="5">
@@ -38,6 +38,7 @@
                         <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
                         <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
                         <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Location" DisplayMemberBinding="{Binding Location}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -57,31 +58,34 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Products" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="20" Foreground="White" FontWeight="Bold" FontFamily="Segoe Print"/>
-                <TextBlock x:Name="txtid" Text="Item id:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="1" Visibility="Collapsed" />
+                <TextBlock x:Name="txtid" Text="Item id:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="1" Visibility="Collapsed" Margin="60,0,0,0" />
                 <TextBlock Text="Name:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="2" HorizontalAlignment="Left" Margin="60,0,0,0"/>
                 <TextBlock Text="Quantity:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="3" HorizontalAlignment="Left" Margin="60,0,0,0" />
                 <TextBlock Text="Price:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="4" HorizontalAlignment="Left" Margin="60,0,0,0" />
                 <TextBlock Text="Description:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="5" HorizontalAlignment="Left" Margin="60,0,0,0"/>
+                <TextBlock Text="Location:" TextAlignment="Left" Grid.Column="0" Foreground="White" Grid.Row="6" HorizontalAlignment="Left" Margin="60,0,0,0"/>
 
                 <TextBox x:Name="boxid" Grid.Row="1" Grid.Column="1" TextAlignment="Left" Foreground="White" Text="{Binding CurrentProduct.ItemId}" Cursor="Arrow" Visibility="Collapsed"  />
                 <TextBox Foreground="White" Grid.Row="2" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Name}"  />
                 <TextBox Foreground="White" Grid.Row="3" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Quantity}" />
                 <TextBox Foreground="White" Grid.Row="4" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Price}"/>
-                <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Description}"/>
+                <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Description}" />
+                <TextBox Foreground="White" Grid.Row="6" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentProduct.Location}"/>
 
             </Grid>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top"
-                    HorizontalAlignment="Center" Margin="10">
+                    HorizontalAlignment="Center" Margin="20">
             <Button x:Name="btcreate" Width="100" Content="Create" Background="#FF3A8CB7"
                 Command="{Binding createProductCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <Button x:Name="btedit" Width="150" Content="Modify/Delete" Background="#FF3A8CB7" 
+            <Button x:Name="btedit" Width="150" Content="Manage products" Background="#FF3A8CB7" 
                 Cursor="Hand" Margin="5" Click="editClick" />
 
             <Button x:Name="btdel" Width="100" Content="Delete" Background="#FF3A8CB7"

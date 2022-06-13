@@ -5,25 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Proyecto_TFG.Views"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             mc:Ignorable="d" d:DesignWidth="950" Height="600">
+             mc:Ignorable="d" d:DesignWidth="900" Height="560">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding loadProductsCommand}" CommandParameter="outbound"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
             <Button Content="Create Order" Width="150" Margin="20" Background="#FF3A8CB7" Click="createClick" />
             <Button Content="Manage Orders" Width="150" Margin="20" Background="#FF3A8CB7" Cursor="Hand" Click="manageClick"/>
         </StackPanel>
 
-
-        <StackPanel x:Name="managePanel" Grid.Row="1" Visibility="Collapsed" Grid.RowSpan="2" >
-
+        <TextBlock Text="OUTBOUNDS" Grid.Row="0" FontWeight="Bold" FontSize="35" Height="45"
+                       Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Top" FontFamily="Segoe Print"/>
+        <StackPanel x:Name="managePanel" Grid.Row="2" Visibility="Collapsed" Grid.RowSpan="2" >
+            <TextBlock Text="Outbounds list."  FontWeight="Bold" FontSize="20"  
+                       Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe Print"/>
             <ListView x:Name="outboundList"  MaxHeight="150"  MaxWidth="750" FontSize="12" 
                       ItemsSource="{Binding OutboundList}" SelectedItem="{Binding Outbound}" Foreground="#DDFFFFFF">
                 <i:Interaction.Triggers>
@@ -62,7 +66,7 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel  x:Name="createPanel" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Top" Height="450" Visibility="Visible" >
+        <StackPanel  x:Name="createPanel" Grid.Row="2" Margin="0,0,10,0" VerticalAlignment="Top" Height="450" Visibility="Visible" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Select a client:" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="15"
                            Foreground="White" FontWeight="Bold" FontFamily="Segoe Print" Margin="2"
@@ -78,7 +82,9 @@
 
             </ComboBox>
             </StackPanel>
-            <ListView x:Name="ProductsList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" Foreground="#DDFFFFFF">
+            <TextBlock Text="Products list." Grid.Row="0" FontWeight="Bold" FontSize="15"  Height="20"
+                       Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe Print"/>
+            <ListView x:Name="ProductsList"  MaxHeight="120"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding ProductsList}" SelectedItem="{Binding Product}" Foreground="#DDFFFFFF">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>
@@ -90,14 +96,16 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" >
                 <TextBlock Text="Quantity: " FontWeight="Bold" Foreground="White" 
                            FontSize="15" Padding="10" VerticalAlignment="Center"/>
                 <TextBox Text="{Binding Quantity}" x:Name="Quantity" Width="50" Foreground="White" Margin="20" Cursor="Arrow"/>
                 <Button Width="150" Content="Add to chart" Background="#FF3A8CB7" Command="{Binding addtochartCommand}" CommandParameter="{Binding SelectedItem, ElementName=ProductsList}" Cursor="Hand"/>
             </StackPanel>
             <StackPanel>
-                <ListView x:Name="charList"  MaxHeight="150"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding CharList}" Foreground="#DDFFFFFF">
+                <TextBlock Text="Char list." Grid.Row="0" FontWeight="Bold" FontSize="15" Height="20"
+                       Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe Print"/>
+                <ListView x:Name="charList"  MaxHeight="120"  MaxWidth="750" FontSize="12"  ItemsSource="{Binding CharList}" Foreground="#DDFFFFFF">
                     <ListView.View>
                         <GridView >
                             <GridViewColumn Header="Item id" DisplayMemberBinding="{Binding ItemId}"/>

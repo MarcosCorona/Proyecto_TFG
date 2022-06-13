@@ -42,6 +42,16 @@ namespace Proyecto_TFG.Models
             }
         }
 
+        public string location { get; set; }
+        public string Location
+        {
+            get { return location; }
+            set
+            {
+                location = value;
+                OnPropertyChanged(nameof(Location));
+            }
+        }
         private string description { get; set; }
         public string Description
         {

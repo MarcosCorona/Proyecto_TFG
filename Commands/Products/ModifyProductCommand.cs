@@ -30,7 +30,7 @@ namespace Proyecto_TFG.Commands.Products
                 {
                     if (p.ItemId.Equals(product.ItemId))
                     {
-                        DataSetHandler.modifyProduct(product.ItemId,product.Name,product.Quantity,product.Description,product.Price);
+                        DataSetHandler.modifyProduct(product.ItemId,product.Name,product.Quantity,product.Description,product.Price,product.location);
                         modified(product.Name);
                         inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
                         inventoryViewModel.CurrentProduct = new ProductModel();

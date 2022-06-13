@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Proyecto_TFG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="950">
+             d:DesignHeight="900" d:DesignWidth="950">
     <UserControl.Background>
         <SolidColorBrush Color="#FFBF0549" Opacity="0.5"/>
     </UserControl.Background>
@@ -14,7 +14,7 @@
         <Button Content="LOGOUT" FontWeight="Bold" 
                 Background="#FF05B2BF" HorizontalAlignment="Right" 
                 Margin="10" Width="150" Command="{Binding UpdateViewCommand}" CommandParameter="logout" Cursor="Hand"/>
-        <Grid>
+        <Grid Margin="0,-50" Height="720">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
@@ -80,7 +80,7 @@
                 </Button>
             </StackPanel>
 
-            <StackPanel Grid.Column="1">
+            <StackPanel Grid.Column="1" Height="800" >
                 <ContentControl Content="{Binding SelectedViewModel}" Margin="30" />
             </StackPanel>
         </Grid>
