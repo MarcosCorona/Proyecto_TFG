@@ -69,6 +69,7 @@ namespace Proyecto_TFG.Commands.Products
             }
             
         }
+
         private void id()
         {
             bool? Result = new MessageBoxCustom("Please, check the product id", MessageType.Error, MessageButtons.Ok).ShowDialog();

@@ -24,19 +24,24 @@ namespace Proyecto_TFG.Commands.outbounds
 
         public void Execute(object parameter)
         {
+            //metodo para borrar un albaran.
             OutboundModel order = (OutboundModel)parameter;
             if (order != null)
             {
+                //por cada albaran de salida
                 foreach (OutboundModel o in outboundViewModel.OutboundList)
                 {
-                    if(o.OrderId == order.OrderId)
+                    //si coincide con el id del solicitado para borrar
+                    if (o.OrderId == order.OrderId)
                     {
                         ObservableCollection<OutboundDetailModel> detailList = new ObservableCollection<OutboundDetailModel>();
                         detailList = DataSetHandler.getDetails();
-                        foreach(OutboundDetailModel detail in detailList)
+                        //se borra el detalle
+                        foreach (OutboundDetailModel detail in detailList)
                         {
                             DataSetHandler.removeDetail((int)order.OrderId);
                         }
+                        //se borra el albaran
                         DataSetHandler.removeOutbound((int)order.OrderId);
                         outboundViewModel.OutboundList = DataSetHandler.GetOutbounds();
                         success();

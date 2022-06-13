@@ -14,6 +14,8 @@ namespace Proyecto_TFG.Commands.Clients
 {
     class DeleteClientCommand : ICommand
     {
+        //comando para borrar cliente
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -28,6 +30,7 @@ namespace Proyecto_TFG.Commands.Clients
             {
                 foreach (ClientModel c in clientsViewModel.ClientsList)
                 {
+                    //si el id del cliente que se desea borrar coincide con alguno de la lista lo borra.
                     if (c.ClientId.Equals(client.ClientId))
                     {
                         DataSetHandler.deleteClient(client.ClientId);

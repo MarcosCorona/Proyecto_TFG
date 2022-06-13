@@ -19,7 +19,8 @@ namespace Proyecto_TFG.Commands.Inbounds
         }
 
         public void Execute(object parameter)
-        {
+        {  
+            //metodo para cargar la lista de albaranes
             inboundViewModel.InboundList = DataSetHandler.GetInbounds();
         }
 

@@ -24,16 +24,21 @@ namespace Proyecto_TFG.Commands.Inbounds
 
         public void Execute(object parameter)
         {
+            //metodo para crear un albaran de entrada.
+            //atributos
             SupplierModel s = inboundViewModel.Supplier;
 
             double total = 0;
+
+            //por cada producto calculamos el total del albaran
             foreach (ProductModel p in inboundViewModel.CharList)
             {
                 total = p.Total + total;
             }
-
+            //establecemos la fecha de creacion
             DateTime date = DateTime.Today;
 
+            //se validan las casillas de proveedor y total
             if (s is null)
             {
                 sclient();
@@ -44,15 +49,20 @@ namespace Proyecto_TFG.Commands.Inbounds
             }
             else
             {
+                //si todo es correcto se inserta el albaran
                 bool okInsertar = DataSetHandler.insertInbound(s.SupplierId, date, total);
                 if (okInsertar)
                 {
+                    //por cada producto que existe en la lista del carrito se guardará un detalle asociado a ese albarán.
                     foreach (ProductModel p in inboundViewModel.CharList)
                     {
                         DataSetHandler.insertInboundDetail(p.ItemId, p.Description, p.Quantity, p.Price);
                     }
+                    //dejamos la lista vacía
                     inboundViewModel.CharList = new ObservableCollection<ProductModel>();
+                    //mensaje de creacion
                     ocreated();
+                    //cargamos los albaranes
                     inboundViewModel.InboundList = DataSetHandler.GetInbounds();
                 }
                 else

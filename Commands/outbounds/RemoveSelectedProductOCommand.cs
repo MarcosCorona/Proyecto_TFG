@@ -20,11 +20,13 @@ namespace Proyecto_TFG.Commands.outbounds
 
         public void Execute(object parameter)
         {
-           ProductModel product = (ProductModel)parameter;
+            //metodo para eliminar un producto de la lista del carrito.
+            ProductModel product = (ProductModel)parameter;
            foreach(ProductModel p in outboundViewModel.CharList)
            {
              if(p.ItemId == product.ItemId)
                 {
+                    //si el id del producto es igual al solicitado, se borra.
                     outboundViewModel.CharList.Remove(p);
                     break;
                 }

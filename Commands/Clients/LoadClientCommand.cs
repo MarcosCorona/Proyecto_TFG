@@ -20,6 +20,7 @@ namespace Proyecto_TFG.Commands.Clients
 
         public void Execute(object parameter)
         {
+            //metodo para clonar el cliente seleccionado de la lista o obtener el cliente escrito en el formulario. 
             if (parameter != null)
             {
                 ClientModel client = (ClientModel)parameter;

@@ -7,13 +7,13 @@ using System.Windows;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("MVVM_1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("PC Logistics APP")]
+[assembly: AssemblyDescription("Applicacion destinada a la gestion de un pequeño almacén de productos informáticos.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MVVM_1")]
+[assembly: AssemblyCompany("PC Logistics S.L.")]
+[assembly: AssemblyProduct("PC Logistics APP")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("PC Logistics APP")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 

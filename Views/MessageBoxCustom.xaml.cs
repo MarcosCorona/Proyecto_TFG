@@ -14,15 +14,17 @@ using System.Windows.Shapes;
 
 namespace Proyecto_TFG.Views
 {
-    /// <summary>
-    /// Lógica de interacción para MessageBoxCustom.xaml
-    /// </summary>
+
     public partial class MessageBoxCustom : Window
-    {
+    { 
+        //En la clase interior de la Window MessageBoxCustom se ha creado un constructor que recibe 3 parametros
+        //Mensaje, tipo de mensaje, botones
         public MessageBoxCustom(string Message, MessageType Type, MessageButtons Buttons)
         {
             InitializeComponent();
             txtMessage.Content = Message;
+
+            //switch para, segun el tipo dar un mensaje u otro
             switch (Type)
             {
                 case MessageType.Info:
@@ -49,7 +51,7 @@ namespace Proyecto_TFG.Views
                     }
                     break;
             }
-
+            //switch para elegir botones
             switch (Buttons)
             {
                 case MessageButtons.OkCancel:
@@ -65,6 +67,7 @@ namespace Proyecto_TFG.Views
                     break;
             }
         }
+        //para cambiar los colores.
         public void changeBackgroundThemeColor(Color newColor)
         {
             cardHeader.Background = new SolidColorBrush(newColor);
@@ -105,6 +108,7 @@ namespace Proyecto_TFG.Views
             this.Close();
         }
     }
+    //tipo de mensajes
     public enum MessageType
     {
         Info,
@@ -113,6 +117,7 @@ namespace Proyecto_TFG.Views
         Warning,
         Error,
     }
+    //tipo de botones
     public enum MessageButtons
     {
         OkCancel,

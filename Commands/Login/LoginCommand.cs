@@ -28,13 +28,14 @@ namespace Proyecto_TFG.Commands
         public void Execute(object parameter)
         {
         
+            //metodo que se ejecuta al logearse
             ObservableCollection<PersonModel> personsList = DataSetHandler.GetPerson();
 
             PasswordBox pw = (PasswordBox)parameter;
 
             string passw = pw.Password;
 
-            
+            //validación del usuario y de la contraseña
             if(passw == "" || passw is null)
             {
                 passneeded();
@@ -45,13 +46,17 @@ namespace Proyecto_TFG.Commands
             }
             else {
                 bool passok = false;
+                //por cada persona/usuario que este registrado
                 foreach (PersonModel p in personsList)
                 {
+                    //si el usuario y la contraseña coinciden.
                     if (p.username == loginViewModel.username && p.password == passw)
                     {
+                        //se conectará a la applicación
                         BTLOGT(p.name);
                         loginViewModel.UpdateViewCommand.Execute("home");
                         passok = true;
+                        //definimos el empleado conectado para poder usarlo en el codigo XAML, el que eligirá las limitaciones del usuario.
                         DataSetHandler.setUser(p);
                         break;
                     }
@@ -68,6 +73,7 @@ namespace Proyecto_TFG.Commands
             }
 
         }
+        //respuestas.
         private void BTLOGT(string name)
         {
             bool? Result = new MessageBoxCustom("Welcome " + name + " !!", MessageType.Success, MessageButtons.Ok).ShowDialog();

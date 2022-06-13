@@ -20,6 +20,9 @@ namespace Proyecto_TFG.ViewModels
 
         ReportDataSource rds { get; set; }
 
+        private string CurrentPath = Environment.CurrentDirectory;
+        private string OutboundOrder = "Reporting/OutboundPDF.rdlc";
+        private string InboundOrder = "Reporting/InboundPDF.rdlc";
         public PDFViewModel(UpdateViewCommandV2 updateViewCommand)
         {
             updateViewCommandv2 = updateViewCommand;
@@ -32,7 +35,7 @@ namespace Proyecto_TFG.ViewModels
             rds.Name = "outboundPDF";
             rds.Value = DataSetHandler.getOutboundDataByOrderId(orderid);
             myReport.LocalReport.DataSources.Add(rds);
-            myReport.LocalReport.ReportPath = "../../Reporting/OutboundPDF.rdlc";
+            myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, OutboundOrder);
             byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
             PDFData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
         }
@@ -42,7 +45,7 @@ namespace Proyecto_TFG.ViewModels
             rds.Name = "InboundPDF";
             rds.Value = DataSetHandler.getInboundDataByOrderID(orderid);
             myReport.LocalReport.DataSources.Add(rds);
-            myReport.LocalReport.ReportPath = "../../Reporting/InboundPDF.rdlc";
+            myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InboundOrder);
             byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
             PDFData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
         }
