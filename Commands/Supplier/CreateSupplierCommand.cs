@@ -28,12 +28,7 @@ namespace Proyecto_TFG.Commands.Supplier
             {
                 foreach (SupplierModel s in supplierViewModel.SupplierList)
                 {
-                    if (supplier.SupplierId.Equals(supplier.SupplierId))
-                    {
-                        id();
-                        break;
-                    }
-                    else if (supplier.Name is null || supplier.Name.Equals(""))
+                   if (supplier.Name is null || supplier.Name.Equals(""))
                     {
                         name();
                         break;
@@ -68,10 +63,7 @@ namespace Proyecto_TFG.Commands.Supplier
                 gerror();
             }
         }
-        private void id()
-        {
-            bool? Result = new MessageBoxCustom("Please, check the supplier already exists", MessageType.Error, MessageButtons.Ok).ShowDialog();
-        }
+     
         private void name()
         {
             bool? Result = new MessageBoxCustom("Please, check the supplier name", MessageType.Error, MessageButtons.Ok).ShowDialog();

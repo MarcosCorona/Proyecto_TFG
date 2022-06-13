@@ -92,7 +92,9 @@ namespace Proyecto_TFG.Commands
                     }
                     else
                     {
-                        //error, cantidad negativa.qpositive();
+                        //error, cantidad negativa.
+                        qpositive();
+
                     }
                 }
                 else

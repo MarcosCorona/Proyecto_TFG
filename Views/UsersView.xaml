@@ -16,8 +16,8 @@
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition Height="153*"/>
-            <RowDefinition Height="97*"/>
+            <RowDefinition Height="167*"/>
+            <RowDefinition Height="83*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="5,5,5,5">
 
@@ -86,20 +86,29 @@
 
                 <TextBox Foreground="White" Grid.Row="1" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.password}"/>
                 <DatePicker Foreground="White" Grid.Row="2" Grid.Column="4" Text="{Binding CurrentUser.birthday}"/>
-                <TextBox Foreground="White" Grid.Row="3" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.job}"/>
+                <ComboBox x:Name="cmbClient" Width="165"  Grid.Row="3" Grid.Column="4" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                          ItemsSource="{Binding JobList}" SelectedItem="{Binding CurrentUser.job}" 
+                          VerticalContentAlignment="Center" SelectedIndex="1" Margin="2"  Foreground="Black" FontWeight="Bold" Cursor="AppStarting">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding loadJobsCommand}" CommandParameter="outbound"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </ComboBox>
                 <TextBox Foreground="White" Grid.Row="4" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.address}"/>
                 <TextBox Foreground="White" Grid.Row="5" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.city}"/>
 
             </Grid>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center"
-                    HorizontalAlignment="Center" Height="45" Width="626">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top"
+                    HorizontalAlignment="Center" Height="46">
             <Button x:Name="btcreate" Width="100" Content="Create" Background="#FF3A8CB7"
                 Command="{Binding createUserCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <Button x:Name="btedit" Width="150" Content="Modify/Delete" Background="#FF3A8CB7" 
+            <Button x:Name="btedit" Width="150" Content="Manage users" Background="#FF3A8CB7" 
                 Cursor="Hand" Margin="5" Click="editClick" />
 
             <Button x:Name="btdel" Width="100" Content="Delete" Background="#FF3A8CB7"

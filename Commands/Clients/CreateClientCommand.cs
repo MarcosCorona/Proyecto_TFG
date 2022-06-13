@@ -31,12 +31,8 @@ namespace Proyecto_TFG.Commands.Clients
                 {
                     foreach (ClientModel c in clientsViewModel.ClientsList)
                     {
-                        if (c.ClientId.Equals(client.ClientId) || client.NIF is null)
-                        {
-                            id();
-                            break;
-                        }
-                        else if (client.Name is null || client.Name.Equals(""))
+                       
+                        if (client.Name is null || client.Name.Equals(""))
                         {
                             name();
                             break;
@@ -74,11 +70,8 @@ namespace Proyecto_TFG.Commands.Clients
                 else
                 {
                     //si la lista es nula creará el primer cliente 
-                    if (client.NIF is null)
-                    {
-                        id();
-                    }
-                    else if (client.Name is null || client.Name.Equals(""))
+            
+                    if (client.Name is null || client.Name.Equals(""))
                     {
                         name();
                     }

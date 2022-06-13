@@ -28,12 +28,8 @@ namespace Proyecto_TFG.Commands.Users
             {
                 foreach (PersonModel u in usersViewModel.UserList)
                 {
-                    if (u.dni.Equals(user.dni) || user.dni.Length > 10)
-                    {
-                        id();
-                        break;
-                    }
-                    else if (user.name is null || user.name.Equals(""))
+                   
+                    if (user.name is null || user.name.Equals(""))
                     {
                         name();
                         break;
@@ -94,10 +90,7 @@ namespace Proyecto_TFG.Commands.Users
                 gerror();
             }
         }
-        private void id()
-        {
-            bool? Result = new MessageBoxCustom("Please, check the user DNI/NIE, maybe already exists", MessageType.Error, MessageButtons.Ok).ShowDialog();
-        }
+
         private void name()
         {
             bool? Result = new MessageBoxCustom("Please, check the user name", MessageType.Error, MessageButtons.Ok).ShowDialog();

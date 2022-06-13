@@ -34,12 +34,12 @@ namespace Proyecto_TFG.Commands.Products
                         name();
                         break;
                     }
-                    else if (product.Quantity < 0 || product.Quantity.Equals(""))
+                    else if (product.Quantity <= 0 || product.Quantity.Equals(""))
                     {
                         quantity();
                         break;
                     }
-                    else if (product.Price < 0 || product.Price.Equals(""))
+                    else if (product.Price <= 0 || product.Price.Equals(""))
                     {
                         price();
                         break;

@@ -27,12 +27,13 @@ namespace Proyecto_TFG.Commands.Products
             if (product.Name is null || product.Name.Equals(""))
             {
                 name();
+
             }
-            else if (product.Quantity < 0 || product.Quantity.Equals(""))
+            else if (product.Quantity <= 0 || product.Quantity.Equals(""))
             {
                 quantity();
             }
-            else if (product.Price < 0 || product.Price.Equals(""))
+            else if (product.Price <= 0 || product.Price.ToString().Equals(""))
             {
                 price();
             }
@@ -44,7 +45,7 @@ namespace Proyecto_TFG.Commands.Products
             {
                 glocation();
             }
-            else if(product != null)
+            else
             {
                 foreach (ProductModel p in inventoryViewModel.ProductsList)
                 {
@@ -58,10 +59,7 @@ namespace Proyecto_TFG.Commands.Products
                     }
                 }
             }
-            else
-            {
-                error();
-            }
+         
         }
 
         private void name()
@@ -76,6 +74,7 @@ namespace Proyecto_TFG.Commands.Products
         {
             bool? Result = new MessageBoxCustom("Please, check the product price", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
+  
         private void description()
         {
             bool? Result = new MessageBoxCustom("Please, check the product description", MessageType.Error, MessageButtons.Ok).ShowDialog();

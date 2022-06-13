@@ -81,7 +81,7 @@
                 Command="{Binding createClientCommand}" 
                 Cursor="Hand" Margin="5"/>
 
-            <Button x:Name="btedit" Width="150" Content="Modify/Delete" Background="#FF3A8CB7" 
+            <Button x:Name="btedit" Width="150" Content="Manage clients" Background="#FF3A8CB7" 
                 Cursor="Hand" Margin="5" Click="editClick" />
 
             <Button x:Name="btdel" Width="100" Content="Delete" Background="#FF3A8CB7"

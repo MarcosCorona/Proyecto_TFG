@@ -66,9 +66,24 @@ namespace Proyecto_TFG.ViewModels
                 return userList;
             }
         }
+        private ObservableCollection<String> jobList;
+        public ObservableCollection<String> JobList
+        {
+            set
+            {
+                jobList = value;
+                OnPropertyChanged(nameof(JobList));
+            }
+            get
+            {
+                return jobList;
+            }
+        }
+        public string job { set; get; } 
 
         public int searchedId { get; set; }
 
+        
         public UsersViewModel(UpdateViewCommandV2 updateViewCommand)
         {
             updateViewCommandv2 = updateViewCommand;
@@ -79,6 +94,11 @@ namespace Proyecto_TFG.ViewModels
             deleteUserCommand = new DeleteUserCommand(this);
             modifyUserCommand = new ModifyUserCommand(this);
             searchUserCommand = new SearchUserCommand(this);
+            JobList = new ObservableCollection<string>();
+            JobList.Add("RRHH");
+            JobList.Add("Administrative");
+            JobList.Add("Stock");
+            JobList.Add("Boss");
             CurrentUser = new PersonModel();
         }
     }
