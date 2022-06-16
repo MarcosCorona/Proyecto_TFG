@@ -4127,8 +4127,6 @@ namespace Proyecto_TFG.DataSet {
                 base.Columns.Add(this.columnUsername);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDni}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnUsername}, false));
                 this.columnDni.AllowDBNull = false;
                 this.columnDni.Unique = true;
                 this.columnDni.MaxLength = 9;
@@ -4139,7 +4137,6 @@ namespace Proyecto_TFG.DataSet {
                 this.columnJob.MaxLength = 50;
                 this.columnAddress.MaxLength = 100;
                 this.columnCity.MaxLength = 50;
-                this.columnUsername.Unique = true;
                 this.columnUsername.MaxLength = 50;
             }
             

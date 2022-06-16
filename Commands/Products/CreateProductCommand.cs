@@ -28,7 +28,8 @@ namespace Proyecto_TFG.Commands.Products
             {
                 foreach (ProductModel p in inventoryViewModel.ProductsList)
                 {
-             
+                    string firstL = product.location.Substring(0);
+
                     if (product.Name is null || product.Name.Equals(""))
                     {
                         name();
@@ -53,13 +54,30 @@ namespace Proyecto_TFG.Commands.Products
                         glocation();
                         break;
                     }
+
                     else
                     {
-                        DataSetHandler.insertProduct(product.ItemId, product.Name, product.Quantity, product.Price, product.Description,product.location);
-                        inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
-                        inventoryViewModel.CurrentProduct = new ProductModel();
-                        created(product.Name);
-                        break;
+                        if (product.location.ElementAt(0).ToString().Contains('H'))
+                        {
+                            DataSetHandler.insertProduct(product.ItemId, product.Name, product.Quantity, product.Price, product.Description, product.location);
+                            inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
+                            inventoryViewModel.CurrentProduct = new ProductModel();
+                            created(product.Name);
+                            break;
+                        }else if (product.location.ElementAt(0).ToString().Contains('P'))
+                        {
+                            DataSetHandler.insertProduct(product.ItemId, product.Name, product.Quantity, product.Price, product.Description, product.location);
+                            inventoryViewModel.ProductsList = DataSetHandler.GetProducts();
+                            inventoryViewModel.CurrentProduct = new ProductModel();
+                            created(product.Name);
+                            break;
+                        }
+                        else
+                        {
+                            glocation2();
+                            break;
+                        }
+                     
                     }
                 }
             }
@@ -102,6 +120,10 @@ namespace Proyecto_TFG.Commands.Products
         private void glocation()
         {
           bool? Result = new MessageBoxCustom("Please, check the product location", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void glocation2()
+        {
+            bool? Result = new MessageBoxCustom("Location must start with H (Height) or P (Picking)", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
         public InventoryViewModel inventoryViewModel { get; set; }

@@ -21,74 +21,99 @@ namespace Proyecto_TFG.Commands.Users
             return true;
         }
 
+        
         public void Execute(object parameter)
         {
             PersonModel user = usersViewModel.CurrentUser;
+
+            int age = (DateTime.Today.Year - user.birthday.Year);
+            bool findOk = true; 
+
             if (user != null)
             {
                 foreach (PersonModel u in usersViewModel.UserList)
                 {
+                    if (u.dni.Equals(user.dni))
+                    {
+                        findOk = true;
+                        dniSearched();
+                    }
+                    else
+                    {
+                        findOk = false;
+                    }
                    
+                }
+                if (findOk == false)
+                {
                     if (user.name is null || user.name.Equals(""))
                     {
                         name();
-                        break;
+                        
                     }
                     else if (user.lastname is null || user.lastname.Equals(""))
                     {
                         lname();
-                        break;
                     }
                     else if (user.email is null || user.email.Equals(""))
                     {
                         email();
-                        break;
                     }
                     else if (user.password is null || user.password.Equals(""))
                     {
                         password();
-                        break;
                     }
                     else if (user.birthday > DateTime.Today || user.birthday.Equals(""))
                     {
                         birthday();
-                        break;
                     }
-                    else if (user.job is null|| user.job.Equals(""))
+                    else if (age < 18)
+                    {
+                        birthday2();
+                    }
+                    else if (age > 70)
+                    {
+                        birthday3();
+                    }
+                    else if (user.job is null || user.job.Equals(""))
                     {
                         job();
-                        break;
                     }
                     else if (user.address is null || user.address.Equals(""))
                     {
                         address();
-                        break;
                     }
                     else if (user.city is null || user.city.Equals(""))
                     {
                         city();
-                        break;
                     }
                     else if (user.username is null || user.username.Equals(""))
                     {
-                        city();
-                        break;
+                        usern();
                     }
                     else
                     {
 
-                        DataSetHandler.insertUser(user.dni, user.name, user.lastname, user.email, user.password,user.birthday,user.job,user.address,user.city,user.username);
+                        DataSetHandler.insertUser(user.dni, user.name, user.lastname, user.email, user.password, user.birthday, user.job, user.address, user.city, user.username);
                         usersViewModel.UserList = DataSetHandler.GetPerson();
                         usersViewModel.CurrentUser = new PersonModel();
                         created(user.name);
-                        break;
                     }
                 }
+               
             }
             else
             {
                 gerror();
             }
+        }
+        private void dni()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the user dni.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void dniSearched()
+        {
+            bool? Result = new MessageBoxCustom("The user already exists.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
         private void name()
@@ -111,6 +136,14 @@ namespace Proyecto_TFG.Commands.Users
         {
             bool? Result = new MessageBoxCustom("Please, check the user birthday", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
+        private void birthday2()
+        {
+            bool? Result = new MessageBoxCustom("The user age can't be lower than 18.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void birthday3()
+        {
+            bool? Result = new MessageBoxCustom("The user age can't be greater than 70.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
         private void job()
         {
             bool? Result = new MessageBoxCustom("Please, check the user job", MessageType.Error, MessageButtons.Ok).ShowDialog();
@@ -123,6 +156,10 @@ namespace Proyecto_TFG.Commands.Users
         private void city()
         {
             bool? Result = new MessageBoxCustom("Please, check the user city", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void usern()
+        {
+            bool? Result = new MessageBoxCustom("Please, check the user username", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
 
 

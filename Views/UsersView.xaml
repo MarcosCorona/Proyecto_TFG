@@ -15,7 +15,7 @@
     </i:Interaction.Triggers>
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="167*"/>
             <RowDefinition Height="83*"/>
         </Grid.RowDefinitions>
@@ -23,7 +23,7 @@
 
             <TextBlock Text="Users Management" FontWeight="Bold"  FontSize="35"  
                        Foreground="White" HorizontalAlignment="Center" Height="70" VerticalAlignment="Top" FontFamily="Segoe Print"/>
-            <ListView x:Name="Userlist"  MaxHeight="150"  MaxWidth="900" FontSize="12" 
+            <ListView x:Name="Userlist"  MaxHeight="245"  MaxWidth="900" FontSize="12" 
                   ItemsSource="{Binding UserList}" SelectedItem="{Binding User}" 
                   Foreground="#DDFFFFFF" Margin="2" BorderBrush="#FF00F9FF"
                >
@@ -85,15 +85,10 @@
                 <TextBox Foreground="White" Grid.Row="5" Grid.Column="1" TextAlignment="Left" Text="{Binding CurrentUser.username}"/>
 
                 <TextBox Foreground="White" Grid.Row="1" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.password}"/>
-                <DatePicker Foreground="White" Grid.Row="2" Grid.Column="4" Text="{Binding CurrentUser.birthday}"/>
-                <ComboBox x:Name="cmbClient" Width="165"  Grid.Row="3" Grid.Column="4" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                <DatePicker Foreground="Black" Grid.Row="2" Grid.Column="4" SelectedDate="{Binding CurrentUser.birthday, StringFormat=dd/MM/yy}"/>
+                <ComboBox x:Name="cmbClient" Width="199"  Grid.Row="3" Grid.Column="3" Height="23" HorizontalAlignment="Left" 
                           ItemsSource="{Binding JobList}" SelectedItem="{Binding CurrentUser.job}" 
-                          VerticalContentAlignment="Center" SelectedIndex="1" Margin="2"  Foreground="Black" FontWeight="Bold" Cursor="AppStarting">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Loaded">
-                            <i:InvokeCommandAction Command="{Binding loadJobsCommand}" CommandParameter="outbound"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                          VerticalContentAlignment="Center" SelectedIndex="1"  Foreground="Black" FontWeight="Bold" Cursor="AppStarting">
 
                 </ComboBox>
                 <TextBox Foreground="White" Grid.Row="4" Grid.Column="4" TextAlignment="Left" Text="{Binding CurrentUser.address}"/>

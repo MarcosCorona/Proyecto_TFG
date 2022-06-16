@@ -291,6 +291,7 @@ namespace Proyecto_TFG.Handlers
             }
             else
             {
+                
                 personAdapter.Insert(dni,name,lastname,email,password,birthday,job,address,city,username);
                 return true;
             }

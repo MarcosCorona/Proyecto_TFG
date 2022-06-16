@@ -24,6 +24,7 @@ namespace Proyecto_TFG.Commands.Users
         public void Execute(object parameter)
         {
             PersonModel user = usersViewModel.CurrentUser;
+            int age = (DateTime.Today.Year - user.birthday.Year);
             if (user != null)
             {
                 if (user.name is null || user.name.Equals(""))
@@ -46,10 +47,20 @@ namespace Proyecto_TFG.Commands.Users
                     password();
               
                 }
-                else if (user.birthday < DateTime.Today || user.birthday.Equals(""))
+                else if (user.birthday > DateTime.Today || user.birthday.Equals(""))
                 {
                     birthday();
                 
+                }
+                else if (age < 18)
+                {
+                    birthday2();
+      
+                }
+                else if (age > 70)
+                {
+                    birthday3();
+
                 }
                 else if (user.job is null || user.job.Equals(""))
                 {
@@ -119,6 +130,15 @@ namespace Proyecto_TFG.Commands.Users
         private void birthday()
         {
             bool? Result = new MessageBoxCustom("Please, check the user birthday", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+        private void birthday2()
+        {
+            bool? Result = new MessageBoxCustom("The user age can't be lower than 18.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+        }
+
+        private void birthday3()
+        {
+            bool? Result = new MessageBoxCustom("The user age can't be greater than 70.", MessageType.Error, MessageButtons.Ok).ShowDialog();
         }
         private void job()
         {
